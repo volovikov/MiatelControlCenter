@@ -6,19 +6,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     expressSession = require('express-session'),
     store = require('express-mysql-session');
-    logger = require('morgan'),
-    memwatch = require('memwatch');
+    logger = require('morgan');
 
-var clearLeaks = function() {
-    clearTimeout(leak);
-    memwatch.gc();
-    leak = setTimeout(clearLeaks, 1000);
-};
-var leak = setTimeout(clearLeaks, 1000);
-
-memwatch.on('leak', function(info) {
-    console.log('Memmory leaks: ', info);    
-});
 var app = express(),
     server = require('http').Server(app),
     io = require("socket.io").listen(server);
@@ -65,7 +54,7 @@ app.use(expressSession({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
-app.use('/api', api);
+//app.use('/api', api);
 app.use('/api/client', client);
 app.use('/api/task', task);
 app.use('/api/member', member);
