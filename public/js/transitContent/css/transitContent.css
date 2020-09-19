@@ -1,0 +1,23 @@
+#cdr-list {
+  text-align:right;
+}
+#cdr-list .k-grid-header .k-link {
+  text-align:center;
+  width: auto;
+}
+#cdr-list .k-grid-header {
+  padding-right: 0 !important;
+}
+#cdr-list .k-grid-content {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.k-tooltip-content {
+  text-align:left;
+}
+.change-background {
+  background-color: #b5eaaa;
+}
+.block-background {
+  background-color: lightpink;
+}

@@ -1,0 +1,36 @@
+<div class="col" style="width: 48%;">
+
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойста правила
+            </li>
+        </ul>
+
+        <div>
+                <form id="blacklist-rules-form">
+            <ul class="fieldlist">
+                <li>
+                    <label for="nameFilter">Правило</label>
+                    <input id="nameFilter" name="nameFilter" required type="text" class="k-textbox" style="width: 100%;" value="#= data.nameFilter #"/>
+                </li>
+                <li>
+                    <label for=active">В работе</label>
+                    <input id="active" name="active" required style="width: 100%;" data-text-field="value" data-value-field="value">
+                </li>
+                <li>
+                    <label for="dataE">Данные</label>
+                    <textarea name="dataE" id="dataE" required class="k-textbox" style="width: 100%; min-height: 50px" >#= data.dataE #</textarea>
+                </li>
+                <li>
+                    <label for="info">Ремарка</label>
+                    <textarea name="info" id="info" required class="k-textbox" style="width: 100%; min-height: 50px" >#= data.info #</textarea>
+                </li>                
+                <li>
+                    <button id="blacklist-rules-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                </li>                
+            </ul>  
+             </form>
+        </div> 
+  </div>
+</div>

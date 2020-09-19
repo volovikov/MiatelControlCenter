@@ -1,0 +1,42 @@
+<form id='site-content-form'>
+    <div class="col" style="width: 25%;">            
+        <ul class="fieldlist">
+            <li>
+                <label for="contentName">Имя</label>
+                <input required name="contentName" id="contentName" type="text" class="k-textbox" value="#= data.contentName || '' #" style="width: 100%" />                                                      
+            </li>
+            <li>
+                <label for="contentAuthorId">Автор</label>
+                <select name="contentAuthorId" id="contentAuthorId" class="contentAuthor combobox"></select>
+            </li>
+            <li>
+                <label for="contentUrl">Url</label>
+                <input required validationMessage="Subject need" name="contentUrl" id="contentUrl" class="k-textbox" value="#= data.contentUrl || '' #" style="width: 100%" />                          
+            </li>
+            <li>
+                <label for="contentCreateDate">Дата создания</label>
+                <input required name="contentCreateDate" id="contentCreateDate" class="datepicker" value="#= data.contentCreateDate || u.getCurrentDateTime() #" style="width: 100%" />                          
+            </li>  
+        </ul>            
+    </div>
+    <div class="col" style="width: 74%; position: relative; left: -10px">
+        <ul class="fieldlist">
+            <li>
+                # if (typeof data.contentId != 'undefined') {#
+                <input type="hidden" name="contentId" value="#= data.contentId #">
+                # } #                                
+                <label for="contentHead">Заголовок</label>
+                <textarea id="contentHead" name="contentHead" class="k-textbox  online-html-editor" style="width: 100%; min-height: 100px" >#= data.contentHead || '' #</textarea>
+            </li>
+            <li>
+                <label for="contentBody">Контент</label>
+                <textarea id="contentBody" name="contentBody" class="k-textbox online-html-editor" style="width: 100%; min-height: 250px" >#= data.contentBody || '' #</textarea>
+            </li>  
+            <li align="right">
+                <button id="content-apply-btn" class="content-apply-btn k-button k-primary" onclick="return false;">Применить</button>
+                <button id="content-save-btn" class="content-save-btn k-button" onclick="return false;">Сохранить</button>
+                <button id="content-cancel-btn" class="content-cancel-btn k-button" onclick="return false;">Отменить</button>                    
+            </li>                    
+        </ul>
+    </div>
+</form>

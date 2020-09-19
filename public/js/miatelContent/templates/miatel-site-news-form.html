@@ -1,0 +1,48 @@
+<form id='site-news-form'>
+    <div class="col" style="width: 25%;">            
+        <ul class="fieldlist">
+            <li>
+                <label for="newsName">Имя</label>
+                <input required name="newsName" id="newsName" type="text" class="k-textbox" value="#= data.newsName || '' #" style="width: 100%" />
+            </li>
+            <li>
+                <label for="newsSection">Раздел</label>
+                <select name="newsSection" id="newsSection" class="combobox">
+                    <option value="Сервисы АТС" # if (data.newsSection == 'Сервисы АТС') {# selected #}#>Сервисы АТС</option>
+                    <option value="Акции и скидки" # if (data.newsSection == 'Акции и скидки') {# selected #}#>Акции и скидки</option>
+                    <option value="Достижения" # if (data.newsSection == 'Достижения') {# selected #}#>Достижения</option>
+                    <option value="PBX services" # if (data.newsSection == 'PBX services') {# selected #}#>PBX services</option>
+                    <option value="Sales and discounts" # if (data.newsSection == 'Sales and discounts') {# selected #}#>Sales and discounts</option>
+                    <option value="Achievements" # if (data.newsSection == 'Achievements') {# selected #}#>Achievements</option>
+                </select>
+            </li>            
+            <li>
+                <label for="newsAuthorId">Автор</label>
+                <select name="newsAuthorId" id="newsAuthorId" class="combobox"></select>
+            </li>
+            <li>
+                <label for="newsCreateDate">Дата создания</label>
+                <input required name="newsCreateDate" id="newsCreateDate" class="datepicker" value="#= data.newsCreateDate || u.getCurrentDateTime() #" style="width: 100%" />                          
+            </li>  
+        </ul>            
+    </div>
+    <div class="col" style="width: 74%; position: relative; left: -10px">
+        <ul class="fieldlist">
+            <li>
+                # if (typeof data.newsId != 'undefined') {#
+                <input type="hidden" name="newsId" value="#= data.newsId #">
+                # } #                
+                <label for="newsIntro">Вступление</label>
+                <textarea required  id="newsIntro" name="newsIntro" class="k-textbox  online-html-editor" style="width: 100%; min-height: 150px" >#= data.newsIntro || '' #</textarea>
+            </li>
+            <li>
+                <label for="newsContent">Контент</label>
+                <textarea id="newsContent" name="newsContent" class="k-textbox online-html-editor" style="width: 100%; min-height: 350px" >#= data.newsContent || '' #</textarea>
+            </li>  
+            <li align="right">
+                <button id="news-save-btn" class="news-save-btn k-button k-primary">Сохранить</button>
+                <button id="news-cancel-btn" class="news-cancel-btn k-button ">Отменить</button>                    
+            </li>                    
+        </ul>
+    </div>
+</form>

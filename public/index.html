@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Miatel Control Center</title>
+        <meta charset="utf-8">
+        <link href="css/kendo.common.min.css" rel="stylesheet">
+        <link href="css/kendo.metro.min.css" rel="stylesheet">
+        <link rel="icon" type="image/gif" href="favicon.gif" />
+        <script src="js/common/lib/require.js"></script>
+    </head>
+    <body>
+        <div id="main-page">
+            <div id="preloader">
+                <div id="status">&nbsp;</div>                    
+            </div>
+            <span id="notification" style="display:none;"></span>
+            <script id="bad-template" type="text/x-kendo-template">
+                <div class="bad-template-wrap">
+                    <img src="/img/error-icon.png" />
+                    <i class="hide-notification k-icon k-i-close"></i>
+                    <h3>#= title #</h3>
+                    <p>#= message #</p>
+                </div>
+            </script>  
+            <script id="good-template" type="text/x-kendo-template">
+                <div class="good-template-wrap">
+                    <img src="/img/success-icon.png" />
+                    <i class="hide-notification k-icon k-i-close"></i>
+                    <h3>#= title #</h3>
+                    <p>#= message #</p>
+                </div>
+            </script>
+            
+            <!-- placeholder -->
+        </div>
+        <script>
+            require.config({
+                paths: {
+                    domReady: 'js/common/lib/domReady',
+                    kendo: 'js/common/lib/kendo.all.min',
+                    jquery: 'js/common/lib/jquery.min',
+                    util: 'js/common/lib/util',
+                    storage: 'js/common/lib/jquery.storageapi.min',
+                    css: 'js/common/lib/css',
+                    text: 'js/common/lib/text',
+                    i18n: 'js/common/lib/i18n',
+                    socket: '/socket.io/socket.io'
+                },
+                waitSeconds: 0,
+                i18n: {
+                    locale: 'ru-ru'
+                },                
+                shim: {
+                    kendo: {
+                        deps: ['jquery'],
+                        exports: 'kendo'
+                    }
+                }
+            });  
+            require(['domReady', 'js/app', 'js/settings'], function(domReady, app, settings) {
+                domReady(function() {
+                    window.app = app; // <-- app must be global
+                    app.run(settings);
+                });                
+            });
+        </script>
+    </body>
+</html>

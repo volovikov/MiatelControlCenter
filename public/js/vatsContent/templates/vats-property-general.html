@@ -1,0 +1,62 @@
+<div class="col" style="width: 48%;">
+    <form id="property-form">
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Основные                
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>     
+                    <label for="simple-input">Режим резервирования телефонного номера</label>
+                    <select required name="phoneReservedPeriod" class="combobox">
+                        <option value="3" # if (data.phoneReservedPeriod == 3) {# selected #}#>3 дня</option>
+                        <option value="5" # if (data.phoneReservedPeriod == 5) {# selected #}#>5 дней</option>
+                        <option value="7" # if (data.phoneReservedPeriod == 7) {# selected #}#>7 дней</option>
+                        <option value="10" # if (data.phoneReservedPeriod == 10) {# selected #}#>10 дней</option>
+                    </select>
+                </li>   
+                <li>
+                    <label for="simple-select">Максимальное количество номеров для резерва</label>
+                    <select required name="phoneReservedMax" class="combobox">
+                        <option value="3" # if (data.phoneReservedMax == 3) {# selected #}#>3 номера</option>
+                        <option value="5" # if (data.phoneReservedMax == 5) {# selected #}#>5 номеров</option>
+                        <option value="10" # if (data.phoneReservedMax == 10) {# selected #}#>10 номеров</option>
+                    </select>                                  
+                </li>
+                <li>     
+                    <label for="simple-input">Максимальное количество золотых номера для резерва</label>
+                    <select required name="phoneReservedMaxGold" class="combobox">
+                        <option value="1" # if (data.phoneReservedMaxGold == 1) {# selected #}#>1 номер</option>
+                        <option value="2" # if (data.phoneReservedMaxGold == 2) {# selected #}#>2 номера</option>
+                        <option value="3" # if (data.phoneReservedMaxGold == 3) {# selected #}#>3 номера</option>
+                        <option value="5" # if (data.phoneReservedMaxGold == 5) {# selected #}#>5 номеров</option>
+                    </select> 
+                </li>   
+                <li>     
+                    <label for="simple-input">Максимальное количество серебрянных номера для резерва</label>
+                    <select required name="phoneReservedMaxSilver" class="combobox">
+                        <option value="1" # if (data.phoneReservedMaxSilver == 1) {# selected #}#>1 номер</option>
+                        <option value="2" # if (data.phoneReservedMaxSilver == 2) {# selected #}#>2 номера</option>
+                        <option value="3" # if (data.phoneReservedMaxSilver == 3) {# selected #}#>3 номера</option>
+                        <option value="5" # if (data.phoneReservedMaxSilver == 5) {# selected #}#>5 номеров</option>
+                    </select> 
+                </li>
+                <li>     
+                    <label for="simple-input">Максимальное количество бронзовых номера для резерва</label>
+                    <select required name="phoneReservedMaxBronze" class="combobox">
+                        <option value="1" # if (data.phoneReservedMaxBronza == 1) {# selected #}#>1 номер</option>
+                        <option value="2" # if (data.phoneReservedMaxBronza == 2) {# selected #}#>2 номера</option>
+                        <option value="3" # if (data.phoneReservedMaxBronza == 3) {# selected #}#>3 номера</option>
+                        <option value="5" # if (data.phoneReservedMaxBronza == 5) {# selected #}#>5 номеров</option>
+                    </select> 
+                </li>                
+                <li>
+                    <button id="property-general-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                </li>                
+            </ul>                          
+        </div>      
+    </div>    
+    </form>
+</div>

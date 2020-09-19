@@ -1,0 +1,51 @@
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+        </ul>
+        <div>
+            <form>
+            <ul class="fieldlist">
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="tariffName">Название тарифа</label>
+                        <input required id="name" name="name" type="text" class="k-textbox" style="width: 100%;" value="#= data.name #"/>                                
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="color">Цвет</label>
+                        <select required class="combobox" name="color">
+                            <option # if (data.color == 'yellow') {# selected #}# value="yellow">Желтый</option>
+                            <option # if (data.color == 'orange') {# selected #}# value="orange">Оранженвый</option>
+                            <option # if (data.color == 'red') {# selected #}# value="red">Красный</option>
+                            <option # if (data.color == 'green') {# selected #}# value="green">Зеленый</option>
+                        </select>                
+                    </div>
+                </li>  
+                <li>
+                    <label for="simple-textarea">Описание</label>
+                    <textarea required name="descr" id="simple-textarea" class="k-textbox" style="width: 100%;" >#= data.descr #</textarea>
+                </li>
+                <li>
+                    <label for="cost">Стоимость</label>
+                    <input required name="cost" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= data.cost #"/>                       
+                </li>
+                <li>
+                    <button id="tariff-form-submit-btn" class="tariff-form-submit-btn k-button k-primary">Сохранить</button>
+                    <button id="tariff-form-del-btn" class="tariff-form-del-btn  k-button">Удалить</button>
+                </li>
+            </ul> 
+            </form>
+        </div>    
+    </div>    
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Компании
+            </li>            
+        </ul>
+        <div>
+            <div id="tariff-company-use-list" class="form-inner-grid">
+            </div>            
+        </div>
+    </div>

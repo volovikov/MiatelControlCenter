@@ -1,0 +1,30 @@
+<div class="col" style="width: 48%;">
+    <form id="exception-property-form">
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойста 
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>
+                    <label for="clientId">Клиент</label>
+                    <input id="clientId" name="clientId" required data-text-field="clientName" data-value-field="clientId" style="width: 100%;">
+                    <!--<input id="clientName" readonly name="clientName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientName #"/>     -->
+                </li>
+                <li>
+                    <label for="clientInfo">Ремарка</label>
+                    <textarea name="clientInfo" id="clientInfo" required class="k-textbox" style="width: 100%; min-height: 50px" >#= data.clientInfo #</textarea>
+                </li>                
+                <li>
+                    <input type="hidden" name="id" value="#= data.id #">
+                </li>
+                <li>
+                    <button id="exception-client-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                </li>                
+            </ul>                          
+        </div>      
+    </div>    
+    </form>
+</div>

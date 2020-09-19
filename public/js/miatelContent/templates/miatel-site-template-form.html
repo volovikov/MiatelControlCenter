@@ -1,0 +1,38 @@
+<form id='template-form'>
+    <div class="col" style="width: 25%;">   
+        <ul class="fieldlist">
+            <li>
+                <label for="templateName">Имя</label>
+                <input required validationMessage="Subject need" name="templateName" type="text" class="k-textbox" style="width: 100%;" value="#= data.templateName || '' #"/>        
+            </li>
+            <li>
+                <label for="templateLanguageId">Язык</label>
+                <select name="templateLanguageId" id="templateLanguageId" class="combobox"></select>
+            </li>                         
+            <li>
+                <label for="templateCreateDate">Дата создания</label>
+                <input required name="templateCreateDate" id="contentCreateDate" class="datepicker" value="#= data.templateCreateDate || u.getCurrentDateTime() #" style="width: 100%" />                          
+            </li>             
+        </ul>
+    </div>
+    <div class="col" style="width: 74%; position: relative; left: -10px">
+        <ul class="fieldlist">
+            <li>
+                # if (typeof data.id != 'undefined' || typeof data.templateId != 'undefined') {#
+                <input type="hidden" name="templateId" value="#= data.id || data.templateId #">
+                # } #
+                <label for="templateContentHead">Заголовок</label>
+                <textarea id="templateContentHead" name="templateContentHead" class="k-textbox" style="width: 100%; min-height: 100px" >#= data.templateContentHead || '' #</textarea>                    
+            </li>
+            <li>
+                <label for="templateContentBody">Контент</label>
+                <textarea id="templateContentBody" name="templateContentBody" class="k-textbox" style="width: 100%; min-height: 250px" >#= data.templateContentBody || '' #</textarea>                    
+            </li>                
+            <li align="right">
+                <button id="template-apply-btn" class="k-button k-primary template-apply-btn">Применить</button>
+                <button id="template-save-btn" class="k-button template-save-btn">Сохранить</button>
+                <button id="template-cancel-btn" class="k-button template-cancel-btn">Отменить</button>
+            </li>
+        </ul>                                  
+    </div>
+</form>

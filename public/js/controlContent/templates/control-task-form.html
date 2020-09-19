@@ -1,0 +1,130 @@
+<div class="col" style="width: 50%;">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>  
+            <li>
+                Вложения
+            </li>
+        </ul>
+        <div>
+            <form>
+            <ul class="fieldlist">
+                <li>
+                    <input name="parentTaskId" type="hidden" value="#= data.parentTaskId #">
+                    <label for="simple-textarea">Тема</label>
+                    <textarea name="subject" id="simple-textarea" required validationMessage="Subject need" class="k-textbox" style="width: 100%; min-height: 50px" >#= data.subject #</textarea>
+                </li>
+                <li>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Приоритет</label>
+                        <select name="priority" class="combobox">
+                            <option # if (data.priority == 'Низкий')  {# selected #}#>Низкий</option>
+                            <option # if (data.priority == 'Нормальный') {# selected #}#>Нормальный</option>
+                            <option # if (data.priority == 'Высокий') {# selected #}#>Высокий</option>
+                            <option # if (data.priority == 'Срочный') {# selected #}#>Срочный</option>
+                            <option # if (data.priority == 'Немедленный') {# selected #}#>Немедленный</option>
+                        </select>                      
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Автор</label>
+                        <select name="taskAuthorId" class="combobox">
+                            # for (var i in userList) {#
+                            #   var user = userList[i]; #
+                            <option value="#= user.id #" # if (data.taskAuthorId == user.id) {# selected #}# >#= user.name #</option>
+                            # } #
+                        </select>                     
+                    </div>                    
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Статус</label>
+                        <select name="status" class="combobox">
+                            <option # if (data.status == 'Новая')  {# selected #}#>Новая</option>
+                            <option # if (data.status == 'В работе') {# selected #}#>В работе</option>
+                            <option # if (data.status == 'Решена') {# selected #}#>Решена</option>
+                            <option # if (data.status == 'Закрыта') {# selected #}#>Закрыта</option>
+                            <option # if (data.status == 'Отклонена') {# selected #}#>Отклонена</option>
+                        </select>                     
+                    </div>                
+                </li>
+                <li>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Начало работы</label>
+                        <input name="workBegin" id="datepicker" class="datepicker" value="#= data.workBegin #" style="width: 100%" />                       
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Конец работы</label>
+                        <input name="workEnd" id="datepicker" class="datepicker" value="#= data.workEnd #" style="width: 100%" />                                         
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Готовность</label>
+                        <select name="complete" class="combobox">
+                            <option # if (data.complete == '0%')  {# selected #}#>0%</option>
+                            <option # if (data.complete == '10%') {# selected #}#>10%</option>
+                            <option # if (data.complete == '20%') {# selected #}#>20%</option>
+                            <option # if (data.complete == '30%') {# selected #}#>30$</option>
+                            <option # if (data.complete == '40%') {# selected #}#>40%</option>                        
+                            <option # if (data.complete == '50%') {# selected #}#>50%</option>                        
+                            <option # if (data.complete == '60%') {# selected #}#>60%</option>                        
+                            <option # if (data.complete == '70%') {# selected #}#>70%</option>                        
+                            <option # if (data.complete == '80%') {# selected #}#>80%</option>                        
+                            <option # if (data.complete == '90%') {# selected #}#>90%</option>                                                
+                            <option # if (data.complete == '100%') {# selected #}#>100%</option>                                                
+                        </select>                     
+                    </div>
+                </li>
+                <li>
+                    <label for="simple-select">Назначена</label>
+                    <select name="taskExecutorId" multiple="multiple" class="miltiple-combobox">
+                        # for (var i in userList) {#
+                        #   var user = userList[i]; #
+                        <option value="#= user.id #" # if (data.taskExecutorId.indexOf(user.id.toString()) != -1) {# selected #}# >#= user.name #</option>
+                        # } #
+                    </select>                     
+                </li>
+                <li>
+                    <button class="k-button k-primary btn-save">Сохранить</button>
+                    <button class="k-button btn-delete">Удалить</button>
+                </li>
+            </ul>        
+            </form>
+        </div>  
+        <div>
+            <!-- inputs -->
+        </div>
+    </div>    
+</div>
+<div class="col" style="width: 49%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Комментарии
+            </li>  
+        </ul>
+        <div>
+            <div id="control-task-comment-list" class="statistic-wrapper dialog">
+                <!-- placehodler -->
+            </div>       
+            <div id="control-task-comment-contol" class="row" style="display: table; width: 100%; padding-top: 6px;">
+                <div class="col" style="display: table-cell; width: 90%">
+                    <textarea name="task-comment-textarea" id="task-comment-textarea" required class="k-textbox" style="width: 100%; min-height: 60px"></textarea>
+                </div>
+                <div class="col" style="display: table-cell" align="center">
+                    <button id="task-comment-submit-btn" style="" class="task-comment-submit-btn k-button k-primary k-primary">Submit</button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Подзадачи
+        </li>  
+    </ul>
+    <div>
+        <div id="control-subtask-grid">
+            <!-- placehodler -->
+        </div>       
+    </div>
+</div>

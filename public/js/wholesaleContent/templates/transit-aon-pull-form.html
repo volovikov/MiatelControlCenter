@@ -1,0 +1,51 @@
+<div class="col" style="width: 48%;">
+
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойста
+            </li>
+            <li>
+                Список номеров
+            </li>
+            <li>
+                Состояние по префиксам
+            </li>
+        </ul>
+
+        <div>
+                <form id="aon-pull-form">
+            <ul class="fieldlist">
+                <li>
+                    <label for="pullName">Пулл</label>
+                    <input id="pullName" name="pullName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.pullName #"/>
+                </li>
+                <li>
+                    <label for="clientId">Клиент</label>
+                    <input id="clientId" name="clientId" required data-text-field="clientName" data-value-field="clientId" style="width: 100%;">
+                    <!--<input id="clientName" readonly name="clientName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientName #"/>     -->
+                </li>
+                <li>
+                    <label for="pullInfo">Ремарка</label>
+                    <textarea name="pullInfo" id="pullInfo" required class="k-textbox" style="width: 100%; min-height: 50px" >#= data.pullInfo #</textarea>
+                </li>                
+                <li>
+                    <input type="hidden" name="pullId" value="#= data.pullId #">
+                </li>
+                <li>
+                    <button id="aon-pull-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                </li>                
+            </ul>  
+             </form>
+        </div> 
+        <div>
+          <div id="number-list">
+            <!-- placehodler -->
+          </div>
+        </div>
+        <div>
+            <div id="pull-status">
+            </div>
+        </div>
+  </div>
+</div>

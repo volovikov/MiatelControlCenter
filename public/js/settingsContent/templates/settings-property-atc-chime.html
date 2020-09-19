@@ -1,0 +1,50 @@
+<div class="col" style="width: 28%;">
+    <form id="atc-chime-form">
+    <div class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>     
+                    <label for="chimeName">Название схемы</label>
+                    <input id="chimeName" name="chimeName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.chimeName #"/>                                
+                </li>  
+                <li>     
+                    <label for="chimeComment">Комментарий</label>
+                    <textarea name="chimeComment" id="chimeComment" class="k-textbox" style="width: 100%; min-height: 50px" >#= data.chimeComment #</textarea>
+                </li>
+                <li>     
+                    <label for="chimeOrder">Порядок следования схемы</label>
+                    <input required name="chimeOrder" id="chimeOrder" type="number" class="number" value="#= data.chimeOrder #" min="0" max="100" step="1" style="width: 100%;" />
+                </li>                
+                <li>
+                    <label for="chimeComment">Файл со схемой</label>
+                    <input type="file" name="file"/>
+                    <input id="chimeFileUrl" name="chimeFileUrl" type="hidden" value="#= data.chimeFileUrl #">
+                </li>
+                <li>
+                    <button id="atc-chime-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                    <button id="atc-chime-form-delete-btn" class="k-button">Удалить</button>
+                </li>                
+            </ul>                          
+        </div>      
+    </div>    
+    </form>
+</div>
+<div class="col" style="width: 69%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Изображение
+            </li>  
+        </ul>
+        <div>
+            <div id="settings-property-atc-chime-img" class="atc-chime-img-wrapper">
+                <img src='#= data.chimeFileUrl #'>
+            </div>
+        </div>
+    </div>
+</div>

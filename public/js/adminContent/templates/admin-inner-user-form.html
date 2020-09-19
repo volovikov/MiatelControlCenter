@@ -1,0 +1,112 @@
+<div class="col" style="width: 48%;">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Вн.пользователь
+            </li>
+        </ul>
+        <div>
+            <form>
+            <ul class="fieldlist">
+                <li>
+                    <label for="simple-input">Фамилия, имя</label>
+                    <input required name="userFullName" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.userFullName #"/>                
+                    <input name="id" type="hidden" value="#= user.id #">
+                    <input name="userGlobalId" type="hidden" value="#= user.userGlobalId #">
+                </li>
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-input">Внутренний номер</label>
+                        <input name="innerPhoneNumber" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.innerPhoneNumber #"/>                                                                   
+
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-input">Мобильный телефон</label>
+                        <input name="userMobilePhone" id="simple-input" type="text" class="k-textbox phone-input" style="width: 100%;" value="#= user.userMobilePhone #"/>                    
+                    </div>
+                </li>            
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-input">E-mail</label>
+                        <input name="userEmail" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.userEmail #"/>                    
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-input">Номер в роуминге</label>
+                        <input name="userRomingNumber" id="simple-input" type="text" class="k-textbox  phone-input" style="width: 100%;" value="#= user.userRomingNumber #"/>                                        
+                    </div>
+                </li>   
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">Время дозвона</label>
+                        <select name="phoneCallUpTime" class="combobox">
+                            <option value="5" # if (user.phoneCallUpTime == 5) {# selected #}#>5 сек</option>
+                            <option value="10" # if (user.phoneCallUpTime == 10) {# selected #}#>10 сек</option>
+                            <option value="30" # if (user.phoneCallUpTime == 30) {# selected #}#>30 сек</option>
+                            <option value="60" # if (user.phoneCallUpTime == 60) {# selected #}#>1 мин</option>
+                            <option value="120" # if (user.phoneCallUpTime == 120) {# selected #}#>2 мин</option>
+                            <option value="350" # if (user.phoneCallUpTime == 350) {# selected #}#>5 мин</option>
+                        </select>                                                                       
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">АОН</label>
+                        <select name="phoneAon" class="combobox">
+                            # for (var i in phoneAonList) {#                                
+                            #   var p = phoneAonList[i]; #
+                            <option value='#= p #' # if (p == user.phoneAon) {# selected #}#>#= p #</option>
+                            # } #
+                        </select>
+                    </div>
+                </li>                
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">Запись разговора</label>
+                        <select name="phoneTalkRec" class="combobox">
+                            <option value="on" # if (user.phoneTalkRec == 'on') {# selected #}#>Вкл</option>
+                            <option value="off" # if (user.phoneTalkRec == 'off') {# selected #}#>Выкл</option>
+                        </select>                       
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Переадресация</label>
+                        <select name="phoneRedirect" class="combobox">
+                            <option value="on" # if (user.phoneRedirect == 'on') {# selected #}#>Вкл</option>
+                            <option value="off" # if (user.phoneRedirect == 'off') {# selected #}#>Выкл</option>
+                        </select>                                                   
+                    </div>
+                </li>            
+                <li>
+                    <button id="sipuser-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                    <button id="sipuser-form-del-btn" class="k-button">Удалить</button>
+                </li>
+            </ul>            
+            </form>
+        </div>
+    </div>    
+</div>
+<div class="col" style="width: 49%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Трафик
+            </li>  
+        </ul>
+        <div>
+            <div id="user-call-history" class="statistic-wrapper">
+                <!-- placehodler -->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            История звонков
+        </li>  
+    </ul>
+    <div>
+        <div id="inner-user-history-call-list" class="form-inner-grid">
+        </div>            
+    </div>
+    <div>
+
+    </div>
+</div>

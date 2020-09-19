@@ -1,0 +1,24 @@
+#admin-tree-wrapper {
+    margin: 7px;
+}
+#admin-tree-wrapper .tree-content {
+    border: solid 1px rgb(218, 218, 218);
+    border-top: none;
+    padding: 0.3em;    
+}
+.k-tabstrip>.k-content {
+    padding-left: 0.3em !important;
+    padding-right: 0.3em !important;
+}
+#tree-clients .node {
+    display: inline;
+}
+.k-overflow-anchor.selected {
+    color: #fff;
+    border-color: #7ea700;
+    background-image: none;
+    background-position: 50% 50%;
+    background-color: #7ea700;
+    -webkit-box-shadow: none;
+    box-shadow: none;    
+}

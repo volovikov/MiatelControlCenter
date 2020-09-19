@@ -1,0 +1,76 @@
+<form>
+<div class="col" style="width: 48%;">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">  
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Название города</label>
+                        <input required name="cityName" type="text" class="k-textbox" style="width: 100%;" value="#= data.cityName #"/>                                
+                        <input type="hidden" name="cityId" value="#= data.cityId #">                        
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label>Название страны</label>
+                        <input readonly name="countryId" type="text" style="width: 100%;" value="#= data.countryId #"/>                                
+                    </div>                    
+                </li>
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Префикс</label>
+                        <input readonly name="prefix" type="text" class="k-textbox" style="width: 100%;" value="#= data.prefix #"/>                                
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label>Вид отображения</label>
+                        <input required name="phoneDisplayFormat" style="width: 100%;" value="#= data.phoneDisplayFormat #"/>                                                        
+                    </div>
+                </li>
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Порядок следования</label>
+                        <input required name="range" type="number" style="width: 100%;" value="#= data.range #"/>                                
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label>Категория</label>
+                        <input name="phoneType" type="text" style="width: 100%;" min="0" max="100" value="#= data.phoneType #"/>                                
+                    </div>                    
+                </li>                
+                <li>
+                    <button class="k-button k-primary city-form-submit-btn">Сохранить</button>
+                    <button disabled class="k-button city-form-del-btn">Удалить</button>
+                </li> 
+            </ul>
+        </div>
+    </div>    
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Телефоны
+            </li>
+        </ul>
+        <div>
+            <div id="phone-city">
+                <!-- placeholder -->
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="col" style="width: 49%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                График
+            </li>  
+        </ul>
+        <div>
+            <div id="phone-city-chart" class="statistic-wrapper">
+                <!-- placehodler -->
+            </div>       
+        </div>
+    </div>    
+</div>
+</form>    

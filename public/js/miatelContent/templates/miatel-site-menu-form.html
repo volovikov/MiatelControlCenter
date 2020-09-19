@@ -1,0 +1,64 @@
+<div class="col" style="width: 48%;">
+    <form id='menu-property'>
+    <div id="menu-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Меню
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>
+                    <label for="menuName">Имя</label>
+                    <input required name="menuName" id="menuName" class="k-textbox" value="#= data.menuName #" style="width: 100%" />  
+                </li>
+                <li>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Содержание</label>
+                        <select required name="menuContentId" id="menuContentId" style="width: 100%">
+                            <option value="#= data.menuContentId #">#= data.menuContentName #</option>
+                        </select>                        
+                    </div>
+                    <div class="col" style="width: 49%">
+                        <label>Группа</label>
+                        <select name="menuGroup" class="combobox">
+                            <option value="">Не включина в группу</option>
+                            <option value="miatel" # if (data.menuGroup == 'miatel') {# selected #}#>Миател</option>
+                            <option value="virtualPbx" # if (data.menuGroup == 'virtualPbx') {# selected #}#>Виртуальная АТС</option>
+                            <option value="forBussines" # if (data.menuGroup == 'forBussines') {# selected #}#>Для бизнеса</option>
+                        </select>
+                    </div>
+                </li>                     
+                <li>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Порядок следования</label>
+                        <input name="menuOrderPosition" id="menuOrderPositionId" type="number" value="#= data.menuOrderPosition || 0 #" min="0" max="100" style="width: 100%;" />
+                    </div>
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">Шаблон</label>
+                        <select name="menuTemplateId" id="menuTemplateId" style="width: 100%">
+                            
+                        </select>                        
+                    </div>
+                </li>
+                <li>
+                    <button id="menu-form-submit-btn" class="k-button k-primary menu-save-btn"  onclick="return false;">Сохранить</button>
+                    <button id="menu-form-del-btn" data-menu-id="#= data.menuId #" class="k-button menu-delete-btn menu-delete-btn"  onclick="return false;">Удалить</button>
+                </li>
+            </ul>                          
+        </div>        
+    </div>    
+    </form>
+</div>
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Подменю
+        </li>  
+    </ul>
+    <div id="site-submenu">
+        <div id="site-submenu-grid">
+            <!-- placehodler -->
+        </div> 
+    </div>
+</div>

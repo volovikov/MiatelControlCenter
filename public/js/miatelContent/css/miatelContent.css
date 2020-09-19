@@ -1,0 +1,36 @@
+#task-tree-wrapper {
+    margin: 7px;
+}
+#task-tree-content {
+    border: solid 1px rgb(218, 218, 218);
+    border-top: none;
+    padding: 0.3em;    
+}
+.k-tabstrip>.k-content {
+    padding-left: 0.3em !important;
+    padding-right: 0.3em !important;
+}
+#miatel-subtask-grid .task-in-work {
+    background-color: #e6eada;
+}
+#miatel-report-pie {
+    height: 320px;
+}
+form li .col:last-child {
+    float: right;
+}
+.CodeMirror.cm-s-default {
+    border: solid 1px rgb(218, 218, 218);
+    height: 200px;
+}
+.CodeMirror.cm-s-default:hover,
+.CodeMirror.cm-s-default.CodeMirror-focused {
+    border-color: #8ebc00;
+}
+.k-window .fieldlist {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.k-window .k-window-content {
+    padding: 0;
+}

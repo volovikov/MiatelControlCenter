@@ -1,0 +1,15 @@
+#control-tree-wrapper {
+    margin: 7px;
+}
+#control-tree-wrapper .tree-content {
+    border: solid 1px rgb(218, 218, 218);
+    border-top: none;
+    padding: 0.3em;    
+}
+.k-tabstrip>.k-content {
+    padding-left: 0.3em !important;
+    padding-right: 0.3em !important;
+}
+.tree-content .k-treeview {
+    overflow-x: hidden !important;
+}

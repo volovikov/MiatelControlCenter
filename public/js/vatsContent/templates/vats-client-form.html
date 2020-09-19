@@ -1,0 +1,135 @@
+<div id="image-popup-window">
+    <!-- placeholder -->
+</div>
+<div class="col" style="width: 40%;">
+    <form>
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+            <!--
+            <li>
+                История
+            </li>
+            -->
+        </ul>
+        <div>            
+            <ul class="fieldlist">
+                <li>
+                    <input name="originParentClientId" type="hidden" value="#= data.parentClientId #">
+                    <input name="clientGlobalId" type="hidden" value="#= data.clientGlobalId #">
+                    <label for="subject">Клиент</label>
+                    <input name="subject" id="subject"value="#= data.subject #" style="width: 100%" class="k-textbox"/>
+                </li>
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label for="clientStatus">Состояние</label>
+                        <select name="clientStatus" class="combobox">
+                            <option value="enable" # if (data.clientStatus == "enable") {# selected # } #>Активный</option>
+                            <option value="disable" # if (data.clientStatus == "disable") {# selected # } #>Не активный</option>
+                        </select>                        
+                    </div>
+                    <div class="col" style="width: 50%" id="partnerCodeField">
+                        <!-- placeholder -->
+                    </div>
+                </li>                
+                # if (data.hasChildren != '1') { #
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">Телефон</label>
+                        <input name="clientPhone" value="#= data.clientPhone #" style="width: 100%" class="k-textbox"/>
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Email</label>
+                        <input name="clientEmail" value="#= data.clientEmail #" style="width: 100%" class="k-textbox"/>                        
+                    </div>
+                </li>
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">Ответственный</label>
+                        <select name="clientOwnerId" class="combobox">
+                            # for (var i in userList) {#
+                            #   var user = userList[i]; #
+                            <option value="#= user.id #" # if (data.clientOwnerId == user.id) {# selected #}# >#= user.name #</option>
+                            # } #
+                        </select>                        
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Группа</label>
+                        <select name="parentClientId" id="parentClient" style="width: 100%">
+                            <option value="#= data.parentClientId #">#= data.parentClientSubject #</option>
+                        </select>
+                    </div>
+                </li>
+                # } #          
+                <li>
+                    <label for="simple-select">Наблюдатели</label>
+                    <select name="clientInspectorId" multiple="multiple" class="miltiple-combobox">
+                        # for (var i in inspectorList) {#
+                        #   var inspector = inspectorList[i]; #
+                        <option value="#= inspector.id #" # if (data.clientInspectorId.indexOf(inspector.id.toString()) != -1) {# selected #}# >#= inspector.name #</option>
+                        # } #
+                    </select>
+                </li>
+                <li>
+                    <label for="subject">Компания</label>
+                    # if (typeof data.clientCompanyId != 'undefined') {#<a href="/\\#section/vats/tree/company/company/#= data.clientCompanyId #">Перейти в карточку компании клиента</a> | # } #<a class="client-tree-filter" data-search="#= data.subject #" href='javascript:;'>Искать в дереве</a>
+                </li>                
+                <li>
+                    # if (innerUserPhone && data.clientPhone && !data.hasChildren) {#
+                    <button id="btn-client-save" # if (data.clientStatus == "Закрыта") {# disabled="disabled" #}# class="k-button k-primary">Сохранить</button>
+                    <button id="btn-client-delete" # if (data.clientStatus == "Закрыта") {# disabled="disabled" #}# class="k-button">Удалить</button>
+                    <button id="btn-client-call" # if (data.clientStatus == "Закрыта") {# disabled="disabled" #}# class="k-button">Позвонить</button>
+                    # } else { #
+                    <button id="btn-client-save" # if (data.clientStatus == "Закрыта") {# disabled="disabled" #}# class="k-button k-primary">Сохранить</button>
+                    <button id="btn-client-delete" # if (data.clientStatus == "Закрыта") {# disabled="disabled" #}# class="k-button">Удалить</button>
+                    # } #
+                </li>
+            </ul>
+        </div>
+        <div>
+            <div id="miatel-client-history-list" class="k-grid">
+                <!-- placehodler -->
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="col" style="width: 59%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Комментарии
+            </li>  
+        </ul>
+        <div>
+            <div id="miatel-client-comment-list" class="statistic-wrapper dialog">
+                <!-- placehodler -->
+            </div>       
+            <div id="miatel-client-comment-contol" class="row" style="display: table; width: 100%; padding-top: 6px;">
+                <div class="col" style="display: table-cell; width: 90%">
+                    <textarea name="client-comment-textarea" id="client-comment-textarea" required class="k-textbox" style="width: 100%; min-height: 60px"></textarea>
+                </div>
+                <div class="col" style="display: table-cell" align="center">
+                    <button id="client-comment-submit-btn" style="" class="client-comment-submit-btn k-button k-primary k-primary">Submit</button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Клиенты
+        </li>  
+    </ul>
+    <div>
+        <div id="miatel-subclient-grid">
+            <!-- placehodler -->
+        </div> 
+        <div id="miatel-subclient-grid-readonly" class="hide">
+            <!-- placeholder -->
+        </div>
+    </div>
+</div>

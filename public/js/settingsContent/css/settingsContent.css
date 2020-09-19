@@ -1,0 +1,5 @@
+#main-page-settings-content .atc-chime-img-wrapper {
+    /*max-width: 650px;*/
+    max-height: 1000px;
+    overflow: auto;
+}

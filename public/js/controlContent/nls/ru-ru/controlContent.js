@@ -1,0 +1,5 @@
+define({
+    controlContent: {
+        addComment: 'Добавить'
+    }
+});

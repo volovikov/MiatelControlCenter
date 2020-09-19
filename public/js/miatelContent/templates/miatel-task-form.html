@@ -1,0 +1,198 @@
+<div id="image-popup-window">
+    <!-- placeholder -->
+</div>
+<div id="miatel-task-form" class="col" style="width: 50%;">
+    <form>
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>  
+            <li>
+                Дополнительно
+            </li>            
+            <li>
+                История
+            </li>
+            <li>
+                Вложения
+            </li>            
+        </ul>
+        <div>            
+            <ul class="fieldlist">
+                <li>
+                    <input name="originParentTaskId" type="hidden" value="#= data.parentTaskId #">
+                    <label for="simple-textarea">Тема</label>
+                    <textarea name="subject" id="simple-textarea" required validationMessage="Subject need" class="k-textbox" style="width: 100%; min-height: 50px" >#= data.subject #</textarea>
+                </li>
+                <li>
+                    <div class='col' style="width: 32%">
+                        <label for="simple-select">Приоритет</label>
+                        <select name="priority" class="combobox">
+                            <option # if (data.priority == 'Низкий')  {# selected #}#>Низкий</option>
+                            <option # if (data.priority == 'Нормальный') {# selected #}#>Нормальный</option>
+                            <option # if (data.priority == 'Высокий') {# selected #}#>Высокий</option>
+                            <option # if (data.priority == 'Срочный') {# selected #}#>Срочный</option>
+                            <option # if (data.priority == 'Немедленный') {# selected #}#>Немедленный</option>
+                        </select>                      
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Автор</label>
+                        <select name="taskAuthorId" class="combobox">
+                            # for (var i in userList) {#
+                            #   var user = userList[i]; #
+                            <option value="#= user.id #" # if (data.taskAuthorId == user.id) {# selected #}# >#= user.name #</option>
+                            # } #
+                        </select>                     
+                    </div>                    
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Статус</label>
+                        <select # if (data.hasChildren) {# disabled #}# name="status" class="combobox">
+                            <option # if (data.status == 'Новая')  {# selected #}#>Новая</option>
+                            <option # if (data.status == 'В работе') {# selected #}#>В работе</option>
+                            <option # if (data.status == 'Решена') {# selected #}#>Решена</option>
+                            <option # if (data.status == 'Закрыта') {# selected #}#>Закрыта</option>
+                            <option # if (data.status == 'Отклонена') {# selected #}#>Отклонена</option>
+                            <option # if (data.status == 'Отложена') {# selected #}#>Отложена</option>
+                        </select>                     
+                    </div>                
+                </li>
+                <li>
+                    <div class='col' style="width: 32%">
+                        <label for="simple-select">Начало работы</label>
+                        <input name="workBegin" id="datepicker" class="datepicker" value="#= data.workBegin #" style="width: 100%" />                       
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Конец работы</label>
+                        <input # if (data.hasChildren) {# disabled #}# name="workEnd" id="datepicker" class="datepicker" value="#= data.workEnd #" style="width: 100%" />                                         
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Готовность</label>
+                        <select # if (data.hasChildren) {# disabled #}# name="complete" class="combobox">
+                            <option # if (data.complete == '0%')  {# selected #}#>0%</option>
+                            <option # if (data.complete == '10%') {# selected #}#>10%</option>
+                            <option # if (data.complete == '20%') {# selected #}#>20%</option>
+                            <option # if (data.complete == '30%') {# selected #}#>30%</option>
+                            <option # if (data.complete == '40%') {# selected #}#>40%</option>                        
+                            <option # if (data.complete == '50%') {# selected #}#>50%</option>                        
+                            <option # if (data.complete == '60%') {# selected #}#>60%</option>                        
+                            <option # if (data.complete == '70%') {# selected #}#>70%</option>                        
+                            <option # if (data.complete == '80%') {# selected #}#>80%</option>                        
+                            <option # if (data.complete == '90%') {# selected #}#>90%</option>                                                
+                            <option # if (data.complete == '100%') {# selected #}#>100%</option>                                                
+                        </select>                     
+                    </div>
+                </li>
+                <li>
+                    <div class='col' style="width: 32%">
+                        <label for="simple-select">Предполагаемое время</label>
+                        <select name="needTime" class="combobox">
+                            <option value="60" # if (data.needTime == '60') {# selected #}#>1 час</option>
+                            <option value="240" # if (data.needTime == '240') {# selected #}#>4 часа</option>
+                            <option value="480" # if (data.needTime == '480') {# selected #}#>1 день</option>
+                            <option value="720" # if (data.needTime == '720') {# selected #}#>1,5 дня</option>
+                            <option value="960" # if (data.needTime == '960') {# selected #}#>2 дня</option>                        
+                            <option value="1200" # if (data.needTime == '1200') {# selected #}#>2,5 дня</option>                        
+                            <option value="1440" # if (data.needTime == '1440') {# selected #}#>3 дня</option>                        
+                            <option value="1680" # if (data.needTime == '1680') {# selected #}#>3,5 дня</option>                        
+                            <option value="1920" # if (data.needTime == '1920') {# selected #}#>4 дня</option>                        
+                            <option value="2160" # if (data.needTime == '2160') {# selected #}#>4,5 дня</option>                                                
+                            <option value="2400" # if (data.needTime == '2400') {# selected #}#>5 дней</option>                                                
+                        </select>     
+                    </div>
+                    <div class='col' style="width: 33%">
+                        <label for="simple-select">Назначена</label>
+                        <select name="taskExecutorId" class="combobox">
+                            # for (var i in userList) {#
+                            #   var user = userList[i]; #
+                            <option value="#= user.id #" # if (data.taskExecutorId.toString() == user.id.toString()) {# selected #}# >#= user.name #</option>
+                            # } #
+                        </select>  
+                    </div>
+                    <div class='col' style="width: 33%">
+                        
+                    </div>                   
+                </li>  
+                <li>
+                    <button # if (data.status == "Закрыта") {# disabled="disabled" #}# class="k-button k-primary btn-save">Сохранить</button>
+                    <button # if (data.status == "Закрыта") {# disabled="disabled" #}# class="k-button btn-delete">Удалить</button>
+                </li>
+            </ul>                    
+        </div>  
+        <div>
+            <ul class="fieldlist">
+                <li>
+                    <label for="simple-select">Наблюдатели</label>
+                    <select name="taskInspectorId" multiple="multiple" class="miltiple-combobox">
+                        # for (var i in inspectorList) {#
+                        #   var inspector = inspectorList[i]; #
+                        <option value="#= inspector.id #" # if (data.taskInspectorId.indexOf(inspector.id.toString()) != -1) {# selected #}# >#= inspector.name #</option>
+                        # } #
+                    </select>                     
+                </li>   
+                # if (typeof data.parentTaskId != 'undefined' && data.parentTaskId != 0) {#
+                <li>
+                    <label for="simple-select">Родительская задача</label>
+                    <select name="parentTaskId" id="parentTask" style="width: 100%">
+                        <option value="#= data.parentTaskId #">#= data.parentTaskSubject #</option>
+                    </select>
+                </li>
+                # } #                
+                <li>
+                    <button # if (data.status == "Закрыта") {# disabled="disabled" #}# class="k-button k-primary btn-save">Сохранить</button>
+                    <button # if (data.status == "Закрыта") {# disabled="disabled" #}# class="k-button btn-delete">Удалить</button>
+                </li>
+            </ul>
+        </div>
+        # if (typeof data.parentTaskId != 'undefined') {#
+        <div>
+            <div id="miatel-task-history-list" class="k-grid">
+                <!-- placehodler -->
+            </div>
+        </div>
+        <div>
+            <!-- inputs -->
+        </div>
+        # } # 
+    </div> 
+    </form>
+</div>
+# if (typeof data.parentTaskId != 'undefined') {#
+<div class="col" style="width: 49%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Комментарии
+            </li>  
+        </ul>
+        <div>
+            <div id="miatel-task-comment-list" class="statistic-wrapper dialog">
+                <!-- placehodler -->
+            </div>       
+            <div id="miatel-task-comment-contol" class="row" style="display: table; width: 100%; padding-top: 6px;">
+                <div class="col" style="display: table-cell; width: 90%">
+                    <textarea name="task-comment-textarea" id="task-comment-textarea" required class="k-textbox" style="width: 100%; min-height: 60px"></textarea>
+                </div>
+                <div class="col" style="display: table-cell" align="center">
+                    <button id="task-comment-submit-btn" style="" class="task-comment-submit-btn k-button k-primary k-primary">Submit</button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+ #} #
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Подзадачи
+        </li>  
+    </ul>
+    <div id="miatel-subtask">
+        <div id="miatel-subtask-grid">
+            <!-- placehodler -->
+        </div> 
+        <div id="miatel-subtask-grid-readonly" class="hide">
+            <!-- placeholder -->
+        </div>
+    </div>
+</div>

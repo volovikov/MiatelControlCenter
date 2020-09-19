@@ -1,0 +1,46 @@
+<div class="col" style="width: 48%;">
+
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойста
+            </li>
+            <li>
+                Список номеров
+            </li>
+            <li>
+                Состояние по префиксам
+            </li>
+        </ul>
+
+        <div>
+                <form id="sf-aon-pool-form">
+            <ul class="fieldlist">
+                <li>
+                    <label for="poolName">Пулл</label>
+                    <input id="pullName" name="poolName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.poolName #"/>
+                </li>
+                <li>
+                    <label for="poolInfo">Ремарка</label>
+                    <textarea name="poolInfo" id="poolInfo" required class="k-textbox" style="width: 100%; min-height: 50px" >#= data.poolInfo #</textarea>
+                </li>                
+                <li>
+                    <input type="hidden" name="poolId" value="#= data.poolId #">
+                </li>
+                <li>
+                    <button id="sf-aon-pool-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                </li>                
+            </ul>  
+             </form>
+        </div> 
+        <div>
+          <div id="number-list">
+            <!-- placehodler -->
+          </div>
+        </div>
+        <div>
+            <div id="pool-status">
+            </div>
+        </div>
+  </div>
+</div>

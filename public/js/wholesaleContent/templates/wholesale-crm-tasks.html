@@ -1,0 +1,33 @@
+<div class="col" style="width: 48%;" id="crm-tasks-wrapper">
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Задачи
+            </li>
+        </ul>
+
+        <div>
+            <div id="forms-wrapper">
+
+            </div>
+
+            <button type="submit" id="contract-cancel-btn" class="k-button k-primary contractButton">Отменить шаг</button>
+            <button type="submit" id="contract-save-btn" class="k-button k-primary contractButton">Сохранить</button>
+            <button type="submit" id="contract-submit-btn" class="k-button k-primary contractButton">Далее</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script id="fieldsTemplate" type="text/x-kendo-template">
+    <li>
+
+        <label data-bind="attr: { for: name+'Id'}, text: desc"
+               style="width: 200px; display: block; float: left;"></label>
+
+        <input data-bind="attr: { type: type, name: name, value: default, id: name+'Id'}" style="padding: 5px;"/>
+
+    </li>
+</script>
+

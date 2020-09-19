@@ -1,0 +1,74 @@
+#main-page-topmenu {
+    background: rgb(126, 167, 0);    
+    color: white;    
+}
+#main-page-topmenu > .k-item {
+    float: right;
+    position: relative;
+    left: -135px;
+    border-color: rgba(255, 255, 255, 0.2);    
+}
+#main-page-topmenu li.attention {
+    background-color: #8ebc00 !important;
+}
+#main-page-topmenu > .k-item .k-i-arrow-s {
+    background-position: -16px -32px;
+}
+#main-page-topmenu > .k-item.k-state-hover.k-state-border-down .k-i-arrow-s {
+    background-position: -16px -32px;
+}
+#main-page-topmenu > .k-item.k-state-border-down .k-i-arrow-s {
+    background-position: 0 -32px;
+}
+.main-page-notify-content table td {
+    white-space: normal;
+}
+.main-page-notify-content .notify-date {
+    font-size: 10px;
+    color: #aaaaaa;
+}
+.main-page-notify-content {
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#main-page-topmenu > .k-item:last-child {
+    border-width: 0 1px 0 1px;
+}
+#main-page-content-wrapper {
+/*    margin: 3em 5em 0 5em;*/
+    margin: 1.8em 2em 0 2em;
+}
+#main-page-content {
+    margin-top: 2em;
+}
+#main-page-footer-wrapper {
+    height: 30px;
+    position: fixed;
+    bottom: 0;
+    background-color: #dddddd;
+    width: 100%;
+}
+#main-page-chat .button-group {
+    height: 40px;
+    line-height: 40px;
+}
+#main-page-chat .dialog {
+    /*min-height: 300px;*/
+    min-height: 255px;
+}
+#main-page-chat .hidden {
+    display: none;
+}
+#main-panel-chat #text-user-input {
+    resize: none !important;
+}
+#main-page-footer .version {
+    color: white;
+    line-height: 30px;
+    padding-left: 24px;
+}
+#main-page-history-grid .notify-date {
+    font-size: 10px;
+    color: #aaaaaa;
+}

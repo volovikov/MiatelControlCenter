@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col" style="width: 48%;">
+        <div class="tabstrip">
+            <ul>
+                <li class="k-state-active">
+                    Свойства
+                </li>
+            </ul>
+            <div>
+                <form>
+                    <ul class="fieldlist">
+                        <li>     
+                            <label for="serverName">Идентификатор компании</label>
+                            <input id="testLogin" name="testLogin" required type="text" class="k-textbox" style="width: 40%;" value="#= testLogin #"/>                                
+							<select id="testselectLogin" name="testselectLogin"  class="combobox" style="width: 40%;" value="#= testLogin #">
+								# for (var i in companyList) {#
+                                                                #   var company = companyList[i]; #
+                                                                <option value="#= company.phone #">#= company.name #</option>
+                                                                # } #
+							</select>
+                        </li>          
+                        <li>
+                            <button id="test-run" class="k-button k-primary">Начать</button>
+                        </li>                         
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="width: 48%;">
+        <div id="tabstrip" class="tabstrip">
+            <ul>
+                <li class="k-state-active">
+                    Результат
+                </li>
+            </ul>
+            <div>
+                <table class="grid" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th data-field="method">Метод</th>
+                            <th data-field="success">Результат</th>
+                        </tr>
+                    </thead>
+                    <tbody id="test-result">
+                        <!-- placehodler -->
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+    </div>
+    <div class="col" style="width: 49%; position: relative; left: -10px">
+        <div id="tabstrip" class="tabstrip">
+            <ul>
+                <li class="k-state-active">
+                    Подробней(Response)	
+                </li>  
+            </ul>
+            <div>
+                <div>
+                    <pre>
+                        <code id="test-result-detail" class="javascript">
+                            <!-- placeholder-->
+                        </code>
+                    </pre>                
+                </div>       
+            </div>
+        </div> 
+        <div id="tabstrip1" class="tabstrip">
+            <ul>
+                <li class="k-state-active">
+                    Подробней(Request)	
+                </li>  
+            </ul>
+            <div>
+                <div>
+					<div id="action-log-list">
+						<!-- placeholder -->
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="protocol-details"></div>

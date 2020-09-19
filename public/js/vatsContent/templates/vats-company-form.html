@@ -1,0 +1,370 @@
+
+<form>
+<div id="user-form-tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Компания                
+        </li>
+        <li>
+            Настройки    
+        </li>
+        <li>
+            Представитель
+        </li>
+        # if (user.contractStatus != "free") {#
+        <li>
+            Директор
+        </li>
+        # } #
+        # if (user.contractStatus != "free") {#
+        <li>
+            Реквизиты
+        </li>
+        # } #
+        <li>
+            Договор
+        </li>
+    </ul>
+    <div>
+        <ul class="fieldlist">
+            <li>     
+                <div class="col" style="width: 49%">
+                    <label for="simple-input">Имя компании</label>
+                    <input required name="companyName" id="companyName" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyName #"/>                                
+                    <input type="hidden" name="userGlobalId" value="#= user.userGlobalId #">
+                    <input type="hidden" name="partnerId" value="#= user.partnerId #">
+                </div>
+                <div class="col" style="width: 50%">
+                # if (user.companyVersion == "fiz") { #
+                    <label >Тип компании</label>
+                    <input readonly name="companyVersion" id="companyVersion" type="text" class="k-textbox" style="width: 100%;" value="Физическое лицо"/>  
+                    <input type="hidden" name="companyForm" value="#= user.companyForm #">                         
+                    <input type="hidden" name="companyVersion" value="#= user.companyVersion #">
+                # } else if (user.companyVersion == 'ip') { #    
+                    <label >Тип компании</label>
+                    <input readonly name="companyVersion" id="companyVersion" type="text" class="k-textbox" style="width: 100%;" value="Индивидуальный предприниматель"/>                      
+                    <input type="hidden" name="companyForm" value="#= user.companyForm #">                         
+                    <input type="hidden" name="companyVersion" value="#= user.companyVersion #">                        
+                # } else { #
+                    <label for="simple-select">Организационно-правовая форма</label>
+                    <select name="companyForm" class="combobox">
+                        <option value="ooo" # if (user.companyForm == 'ooo') {# selected #}#>Общество с Ограниченной Ответственностью (ООО)</option>
+                        <option value="ao" # if (user.companyForm == 'ao') {# selected #}# >Акционерное Общество (АО)</option>
+                        <option value="pao" # if (user.companyForm == 'pao') {# selected #}#>Публичное Акционерное Общество (ПАО)</option>                            
+                        <option value="oao" # if (user.companyForm == 'oao') {# selected #}#>Открытое Акционерное Общество (ОАО)</option>                            
+                        <option value="zao" # if (user.companyForm == 'zao') {# selected #}#>Закрытое Акционерное Общество (ЗАО)</option>
+                        <option value="other" # if (user.companyForm == 'other') {# selected #}#>Другая</option>
+                    </select>  
+                    <input type="hidden" name="companyVersion" value="#= user.companyVersion #">                         
+                # } #
+                </div>
+            </li>   
+            <li>     
+                <div class="col" style="width: 49%">
+                    <label for="simple-input">Сфера деятельности</label>
+                    <input required name="companyAction" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyAction #"/>                                
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="simple-input">Количество сотрудников</label>
+                    <input required name="companyWorkerCount" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyWorkerCount #"/>                                                
+                </div>
+            </li>   
+            <li>     
+                <div class="col" style="width: 49%">
+                    <label for="simple-select">Тариф</label>
+                    <input name="tariffName" readonly class="k-textbox" style="width: 100%;" value="#= user.tariffName #">
+                    <input name="tariffId" type="hidden" class="k-textbox" style="width: 100%;" value="#= user.tariffId #">                        
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="simple-select">Баланс</label>
+                    <input name="balance" readonly class="k-textbox" style="width: 100%;" value="">
+                </div>
+            </li>            
+            <li>
+                <label for="subject">Клиент</label>
+                # if (user.clientId) {#
+                <a href="/\\#section/vats/tree/clients/client/#= user.clientId #">Перейти в карточку клиента</a> | # } #<a class="client-tree-filter" data-search="#= user.companyName #" href='javascript:;'>Искать в дереве</a>
+            </li>
+            
+            <li>
+                <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                <button class="k-button user-form-del-btn">Удалить</button>
+            </li>
+        </ul>                          
+    </div>
+    <div>
+        <ul class="fieldlist">
+            <li>     
+                <div class="col" style="width: 49%">
+                    <label for="notifyEmail">E-mail для уведомлений</label>
+                    <input name="notifyEmail" type="text" class="k-textbox" style="width: 100%;" value="#= user.notifyEmail || '' #"/>                                
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="notifyPhone">Телефон для уведомлений</label>
+                    <input name="notifyPhone" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.notifyPhone || ''#"/>                                
+                </div>                    
+            </li> 
+            <li>
+                <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                <button class="k-button user-form-del-btn">Удалить</button>
+            </li>            
+        </ul>
+    </div>
+    <div>
+        <ul class="fieldlist">
+            <li>     
+                <div class="col" style="width: 49%">
+                    <label for="simple-input">Имя представителя</label>
+                    <input required name="ownerName" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerName #"/>                                
+                    <input name="id" type="hidden" value="#= user.id #">
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="simple-input">Фамилия</label>
+                    <input required name="ownerFamily" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerFamily #"/>                                
+                </div>                    
+            </li>   
+            <li>     
+                <div class="col" style="width: 49%">
+                    <label for="simple-input">Отчество</label>
+                    <input required name="ownerSurname" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerSurname #"/>                                
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="simple-input">E-mail</label>
+                    <input name="ownerEmail" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerEmail #"/>                                                
+                </div>
+            </li>   
+            <li>     
+                <label for="ownerPhone">Телефон</label>
+                <input required name="ownerPhone" id="ownerPhone" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerPhone #"/>                     
+            </li>                
+            <li>
+                <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                <button class="k-button user-form-del-btn">Удалить</button>
+            </li>
+        </ul>                       
+    </div>
+    # if (user.contractStatus != "free") {#
+    <div>
+        <ul class="fieldlist">
+            <li>
+                <div class="col" style="width: 49%">
+                    <label for="directorName">Имя директора</label>
+                    <input name="directorName" type="text" class="k-textbox" style="width: 100%;" value="#= user.directorName #"/>
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="directorFamily">Фамилия</label>
+                    <input name="directorFamily" type="text" class="k-textbox" style="width: 100%;" value="#= user.directorFamily #"/>
+                </div>
+            </li>
+            <li>
+                <div class="col" style="width: 49%">
+                    <label for="directorSurname">Отчество</label>
+                    <input name="directorSurname" type="text" class="k-textbox" style="width: 100%;" value="#= user.directorSurname #"/>
+                </div>
+                <div class="col" style="width: 50%">
+                    <label for="directorEmail">E-mail</label>
+                    <input name="directorEmail" type="text" class="k-textbox" style="width: 100%;" value="#= user.directorEmail #"/>
+                </div>
+            </li>
+            <li>
+                <label for="directorPhone">Телефон</label>
+                <input name="directorPhone" type="text" class="k-textbox" style="width: 100%;" value="#= user.directorPhone #"/>
+            </li>
+            <li>
+                <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                <button class="k-button user-form-del-btn">Удалить</button>
+            </li>
+        </ul>
+    </div>
+    # } #
+    # if (user.contractStatus != "free") {# 
+    <div class="form-group">
+        <ul class="fieldlist">
+            <li class="group">
+                <label>Общее</label>
+                <ul class="fieldlist">
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyInn">ИНН</label>
+                            <input required name="companyInn" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyInn #"/>                                                        
+                        </div>
+                        <div class="col" style="width: 32%">
+                            <label for="companyKpp">КПП</label>
+                            <input required name="companyKpp" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyKpp #"/>                                                                                
+                        </div>
+                        <div class="col" style="width: 33%">
+                            <label for="companyOgrn">ОГРН</label>
+                            <input required name="companyOgrn" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyOgrn #"/>                                                        
+                        </div>                        
+                    </li>
+                </ul>
+            </li>
+            # if (user.companyVersion != 'fiz') {#
+            <li class="group"> 
+                <label>Фактический адрес</label>
+                <ul class="fieldlist">
+                    <li>
+                         <div class="col" style="width: 32%">
+                            <label for="companyRealCountry">Страна</label>
+                            <input required name="companyRealCountry" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyRealCountry #"/>                                                                                
+                        </div>
+                        <div class="col" style="width: 32%">
+                            <label for="companyRealCity">Город</label>
+                            <input required name="companyRealCity" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyRealCity #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="companyRealIndex">Почтовый индекс</label>
+                            <input required name="companyRealIndex" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyRealIndex #"/>                                                                                
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyRealStreet">Улица</label>
+                            <input required name="companyRealStreet" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyRealStreet #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="companyRealHouse">Дом</label>
+                            <input required name="companyRealHouse" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyRealHouse #"/>                                                                                
+                        </div>    
+                        <div class="col"  style="width: 33%">&nbsp;</div>
+                    </li>
+                </ul>
+            </li>
+            <li class="group">
+                <label>Почтовый адрес</label>
+                <ul class="fieldlist">
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyPostCountry">Страна</label>
+                            <input required name="companyPostCountry" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyPostCountry #"/>                                                                                
+                        </div>
+                        <div class="col" style="width: 32%">
+                            <label for="companyPostCity">Город</label>
+                            <input required name="companyPostCity" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyPostCity #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="companyPostIndex">Почтовый индекс</label>
+                            <input required name="companyPostIndex" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyPostIndex #"/>                                                                                
+                        </div>  
+                    </li>
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyPostStreet">Улица</label>
+                            <input required name="companyPostStreet" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyPostStreet #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="companyPostHouse">Дом</label>
+                            <input required name="companyPostHouse" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyPostHouse #"/>                                                                                
+                        </div>    
+                        <div class="col"  style="width: 33%">&nbsp;</div>
+                    </li>                    
+                </ul>
+            </li>
+            <li class="group">
+                <label>Банковские реквизиты</label>
+                <ul class="fieldlist">
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyBankAccount">Номер счета в банке</label>
+                            <input required name="companyBankAccount" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyBankAccount #"/>                                                                                
+                        </div>
+                        <div class="col" style="width: 32%">
+                            <label for="companyBankName">Наименование банка</label>
+                            <input required name="companyBankName" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyBankName #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="companyBankKorAccount">КОРСЧЕТ банка</label>
+                            <input required name="companyBankKorAccount" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyBankKorAccount #"/>                                                                                
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyBik">БИК банка</label>
+                            <input required name="companyBik" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyBik #"/>                                                                                
+                        </div> 
+                        <div class="col"  style="width: 32%">&nbsp;</div>
+                        <div class="col"  style="width: 33%">&nbsp;</div>
+                    </li>
+                </ul>
+            </li>
+            # } else { #   
+            <li class="group">
+                <label>Паспортные данные</label>
+                <ul class="fieldlist">
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="companyPassport">Номер паспорта</label>
+                            <input required name="companyPassport" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyPassport #"/>                                                                                
+                        </div>
+                        <div class="col" style="width: 32%">
+                            <label for="ownerDateOfBirth">Дата рождения</label>
+                            <input required name="ownerDateOfBirth" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerDateOfBirth #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="ownerPlaceOfBirth">Место рождения</label>
+                            <input required name="ownerPlaceOfBirth" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerPlaceOfBirth #"/>                                                                                
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col" style="width: 32%">
+                            <label for="ownerPassportIssued">Кем выдан паспорт</label>
+                            <input required name="ownerPassportIssued" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerPassportIssued #"/>                                                                                
+                        </div>
+                        <div class="col" style="width: 32%">
+                            <label for="ownerPassportDate">Дата выдачи</label>
+                            <input required name="ownerPassportDate" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerPassportDate #"/>                                                                                
+                        </div>                    
+                        <div class="col" style="width: 33%">
+                            <label for="ownerPassportCode">Код подразделения</label>
+                            <input required name="ownerPassportCode" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerPassportCode #"/>                                                                                
+                        </div>                    
+                    </li>  
+                    <li>
+                        <label for="ownerAddress">Прописка</label>
+                        <input required name="ownerAddress" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerAddress #"/>                                                                                
+                    </li>                
+                    <li>                    
+                        <label for="ownerPassportIssued">Паспорт</label>
+                        <div id="ownerPassportFiles"></div>
+                    </li>                    
+                </ul>
+            </li>                
+            # } #
+            <li class="group no-border">
+                <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                <button class="k-button user-form-del-btn">Удалить</button>
+            </li>                
+        </ul>
+    </div>
+    # } #
+    <div>
+        <ul class="fieldlist">
+            <li>
+                <label for="contractNumber">Номер договора</label>
+                <input style="width: 100%;" readonly class="k-textbox" value="#= user.contractNumber == null ? '' :  user.contractNumber #">
+            </li>
+            <li>                 
+                <label for="contractStatus">Статус</label>
+                <select required name="contractStatus" class="combobox">
+                    <option value='free' # if (user.contractStatus == 'free') {# selected #}#>Не подписан</option>
+                    <option value='inprogress' # if (user.contractStatus == 'inprogress') {# selected #}#>В процессе заполнения данных</option>
+                    <option value='checked' # if (user.contractStatus == 'checked') {# selected #}#>На проверке у менеджера</option>
+                    <option value="signed" # if (user.contractStatus == 'signed') {# selected #}#>Подписан</option>
+                </select>
+            </li>
+            # if (user.esignFileUrl) {#
+            <li>
+                <label for="contractStatus">Электронная подпись</label>
+                <a href="#= user.esignFileUrl #">#= user.esignFile #</a>
+            </li>
+            # } #
+            <li>
+                # if (user.contractStatus == 'checked') {#
+                <button class="k-button k-primary contract-sign-btn">Подписать</button>
+                # } #
+            </li>                
+        </ul>
+    </div>
+</div>    
+</form>
+

@@ -1,0 +1,73 @@
+<div class="col" style="width: 48%;">
+    <form id='member-property'>
+    <div id="member-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Сотрудник
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>     
+                    <label for="simple-input">Имя</label>
+                    <input required name="name" id="name" type="text" class="k-textbox" style="width: 100%;" value="#= member.name #"/>                                
+                    <input name="id" type="hidden" value="#= member.id #">
+                </li>   
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">login</label>
+                        <input required name="login" id="login" type="text" class="k-textbox" style="width: 100%;" value="#= member.login #"/>                                
+                    </div>                    
+                    <div class="col" style="width: 50%">
+                        <label for="simple-input">Пароль</label>
+                        <input type="password" required name="password" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= member.password #"/>                                
+                    </div>
+                </li>   
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label for="simple-select">Отдел</label>
+                        <input required style="width: 100%" class="department" name="departmentId" required />                        
+                    </div>                    
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">День рождения</label>
+                        <input name="birthday" id="birthday" class="datepicker" style="width: 100%;" value="#= member.birthday || '' #"/>                                
+                    </div>
+                </li>                
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Вн.номер</label>
+                        <input name="innerPhoneNumber" class="k-textbox" style="width: 100%;" value="#= member.innerPhoneNumber || '' #"/>
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Должность</label>
+                        <select style="width:100%" name="position" class="select">
+                            <option # if (member.role == "Директор") {# selected #}# value="Директор">Директор</option>
+                            <option # if (member.role == "Руководитель отдела") {# selected #}# value="Руководитель отдела">Руководитель отдела</option>
+                            <option # if (member.role == "Инженер") {# selected #}# value="Инженер">Инженер</option>
+                            <option # if (member.role == "Менеджер") {# selected #}# value="Менеджер">Менеджер</option>
+                        </select>
+                    </div>
+                </li>
+                <li>     
+                    <label for="partnerCode">Партнерский код</label>                    
+                    <span style="width: 100%;"  class="k-textbox k-space-right search-field"><input readonly name="partnerCode" type="text" id="partnerCode" value="#= member.partnerCode #"/><a id="parnerCodeRefreshBtn" href="javascript:;" class="k-icon k-i-refresh">&nbsp;</a></span>
+                    <!--<input id="partnerCode" name="partnerCode" class="k-textbox" style="width: 100%;"  value="#= member.partnerCode #">-->
+                </li>                   
+                <li>
+                    <label for="simple-select">Роли</label>
+                    <select style="width:100%" multiple name="role" class="multiselect">
+                    </select>                    
+                </li>
+                <li>
+                    <label for="simple-select">Доступ</label>
+                    <input  required style="width: 100%" class="section-access" name="sectionAccessCode"/>                                              
+                </li>               
+                <li>
+                    <button id="member-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                    <button id="member-form-del-btn" class="k-button ">Удалить</button>
+                </li>
+            </ul>                          
+        </div>        
+    </div>    
+    </form>
+</div>

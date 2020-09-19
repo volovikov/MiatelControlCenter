@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="crm-client-detail">
+    <div class="property-form-tabstrip tabstrip">
+      <ul>
+        <li class="k-state-active">
+          Основная информация
+        </li>
+        <li>
+          Банковские реквизиты
+        </li>
+        <li>
+          Контакты
+        </li>
+        <li>
+          Договора
+        </li>
+      </ul>
+
+      <div>
+        <form class="client-main-form">
+          <ul class="fieldlist">
+            <li>
+              <label for="fullClientName">Полное название клиента</label>
+              <input id="fullClientName" name="fullClientName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.fullClientName #"/>
+            </li>
+            <li>
+              <label for="cientName">Краткое название</label>
+              <input id="cientName" name="cientName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientName #"/>
+            </li> 
+            <li>
+              <label for="cientId">Client ID MVTS</label>
+              <input id="cientId" name="cientId" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientId #"/>
+            </li>
+
+            <li>
+              <label for="regNumber">Регистрационный номер</label>
+              <input id="regNumber" name="cientId" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientId #"/>
+            </li>
+            <li>
+              <label for="nalogNumber">Налоговый номер</label>
+              <input id="nalogNumber" name="cientId" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientId #"/>
+            </li>
+            <li>
+              <label for="cientId"></label>
+              <input id="cientId" name="cientId" required type="text" class="k-textbox" style="width: 100%;" value="#= data.clientId #"/>
+            </li>
+
+
+
+
+            <li>
+              <button id="mvts-hidezone-form-submit-btn" class="k-button k-primary">Сохранить</button>
+            </li>                
+          </ul>  
+        </form>
+      </div> 
+      <div>
+        <br>
+        <div class="client-bank-form">
+        </div>
+      </div>
+      <div>
+        <br>
+        <div class="client-contact-form">
+        </div>
+      </div>
+      <div>
+        <br>
+        <div class="client-dogovor-form" style="width: 48%;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

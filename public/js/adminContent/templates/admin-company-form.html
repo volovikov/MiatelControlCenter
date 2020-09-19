@@ -1,0 +1,196 @@
+<div class="col" style="width: 48%;">
+    <form>
+    <div id="user-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Компания                
+            </li>
+            <li>
+                Представитель
+            </li>
+            <li>
+                Договор
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-input">Имя компании</label>
+                        <input required name="companyName" id="companyName" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyName #"/>                                
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-select">Организационно-правовая форма</label>
+                        <select required name="companyForm" class="combobox">
+                            <option value="oao" # if (user.companyForm == 'Публичное акционерное общество (ОАО)') {# selected #}#>Публичное акционерное общество (ОАО)</option>
+                            <option value="ooo" # if (user.companyForm == 'Общество с ограниченной ответственностью (ООО)') {# selected #}#>Общество с ограниченной ответственностью (ООО)</option>
+                            <option value="zao" # if (user.companyForm == 'Непубличное акционерное общество (ЗАО)') {# selected #}#>Непубличное акционерное общество (ЗАО)</option>
+                            <option value="other" # if (user.companyForm == 'Другая') {# selected #}#>Другая</option>
+                        </select>  
+                        <input type="hidden" name="companyVersion" value="#= user.companyVersion #">
+                        <input type="hidden" name="partnerId" value="#= user.partnerId #">
+                    </div>
+                </li>   
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-input">Сфера деятельности</label>
+                        <input required name="companyAction" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyAction #"/>                                
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-input">Количество сотрудников</label>
+                        <input required name="companyWorkerCount" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.companyWorkerCount #"/>                                                
+                    </div>
+                </li>   
+                <li>     
+                    <label for="simple-select">Тариф</label>
+                    <select required name="tariffId" id="tariff-list" style="width: 100%;">
+                    </select>                                
+                </li>                
+                <li>
+                    <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                    <button class="k-button user-form-del-btn">Удалить</button>
+                </li>
+            </ul>                          
+        </div>
+        <div>
+            <ul class="fieldlist">
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-input">Имя пользователя</label>
+                        <input required name="ownerName" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerName #"/>                                
+                        <input name="id" type="hidden" value="#= user.id #">
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-input">Фамилия</label>
+                        <input required name="ownerFamily" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerFamily #"/>                                
+                    </div>                    
+                </li>   
+                <li>     
+                    <div class="col" style="width: 49%">
+                        <label for="simple-input">Отчество</label>
+                        <input required name="ownerSurname" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerSurname #"/>                                
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label for="simple-input">E-mail</label>
+                        <input name="ownerEmail" id="simple-input" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerEmail #"/>                                                
+                    </div>
+                </li>   
+                <li>     
+                    <label for="ownerPhone">Телефон</label>
+                    <input required name="ownerPhone" id="ownerPhone" type="text" class="k-textbox" style="width: 100%;" value="#= user.ownerPhone #"/>                     
+                </li>                
+                <li>
+                    <button class="k-button k-primary user-form-submit-btn">Сохранить</button>
+                    <button class="k-button user-form-del-btn">Удалить</button>
+                </li>
+            </ul>                       
+        </div>   
+        <div>
+            <ul class="fieldlist">
+                <li>
+                    <label for="contractNumber">Номер договора</label>
+                    <input style="width: 100%;" readonly class="k-textbox" value="#= user.contractNumber == null ? '' :  user.contractNumber #">
+                </li>
+                <li>                 
+                    <label for="contractStatus">Статус</label>
+                    <select required name="contractStatus" class="combobox">
+                        <option value='free' # if (user.contractStatus == 'free') {# selected #}#>Не подписан</option>
+                        <option value='inprogress' # if (user.contractStatus == 'inprogress') {# selected #}#>В процессе заполнения данных</option>
+                        <option value='checked' # if (user.contractStatus == 'checked') {# selected #}#>На проверке у менеджера</option>
+                        <option value="signed" # if (user.contractStatus == 'signed') {# selected #}#>Подписан</option>
+                    </select>
+                </li>
+                <li>                 
+                    <label for="contractStatus">Договор</label>
+                    <a href="#= user.contractFileUrl #">#= user.contractFile == null ? '' :  user.contractFile #</a><br>                    
+                </li>  
+                # if (user.esignFileUrl) {#
+                <li>
+                    <label for="contractStatus">Электронная подпись</label>
+                    <a href="#= user.esignFileUrl #">#= user.esignFile #</a>
+                </li>
+                # } #
+                <li>
+                    # if (user.contractStatus == 'checked') {#
+                    <button class="k-button k-primary contract-sign-btn">Подписать</button>
+                    # } #
+                </li>                
+            </ul>
+        </div>
+    </div>    
+    </form>
+</div>
+<div class="col" style="width: 49%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Трафик
+            </li>  
+        </ul>
+        <div>
+            <div id="user-group-call-history" class="statistic-wrapper">
+                <!-- placehodler -->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Вн.пользователи
+        </li>  
+        <li>
+            Список номеров
+        </li>
+        <li>
+            Платежи
+        </li>
+        <li>
+            История звонков
+        </li>   
+        <li>
+            Протокол действий
+        </li>
+        <li>
+            Инф.сообщения
+        </li>    
+        <li>
+            Документы
+        </li>          
+    </ul>
+    <div>
+        <div id="inner-users-list">
+            <!-- placehodler -->
+        </div>          
+    </div>
+    <div>
+        <div id="aon-list">
+            <!-- placeholder -->
+        </div>
+    </div>
+    <div>
+        <div id="payments-list">
+            <!-- placeholder -->
+        </div>        
+    </div>
+    <div>
+        <div id="history-call-list">
+            <!-- placeholder -->
+        </div>
+    </div>
+    <div>
+        <div id="action-log-list">
+            <!-- placeholder -->
+        </div>
+    </div>    
+    <div>
+        <div id="messages-list">
+            <!-- placeholder -->
+        </div>
+    </div>   
+    <div>
+        <div id="documents-list">
+            <!-- placeholder -->
+        </div>
+    </div>     
+</div>

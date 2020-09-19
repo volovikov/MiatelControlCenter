@@ -1,0 +1,54 @@
+<div class="row">    
+    <div class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+            <li>
+                Состояние
+            </li>            
+        </ul>
+        <div>
+            <form>
+                <ul class="fieldlist">
+                    <li>     
+                        <label for="companyName">Название компании</label>
+                        <input id="companyNamee" readonly name="companyName" required type="text" class="k-textbox" style="width: 40%;" value="#= data.companyName #"/>                                
+                    </li>  
+                    <li>     
+                        <label for="port">Порт</label>
+                        <input name="port" readonly id="port" type="text" class="k-textbox" value="#= data.port #" style="width: 40%;" />
+                    </li>                
+                    <li>     
+                        <label for="pid">pid</label>
+                        <input name="pid" readonly id="pid" type="text" class="k-textbox" value="#= data.pid #" style="width: 40%;" />
+                    </li>    
+                    <li>     
+                        <label for="activity">Состояние</label>
+                        <select name="activity" class="combobox">
+                            <option # if (data.activity == 'running')  {# selected #}#>В работе</option>
+                            <option # if (data.activity == 'stopped') {# selected #}#>Остановлен</option>
+                        </select>                      
+                    </li>                 
+                </ul>
+            </form>
+        </div>
+        <div>
+            <div class="row">
+                <div id="asterisk-statistic-toolbar">
+                    <!-- placeholder -->
+                </div>
+                <div class="col" style="width: 48%;">
+                    <div id="asterisk-memory-usage" class="statistic-wrapper">
+                        <!-- placehodler -->
+                    </div>                    
+                </div>
+                <div class="col" style="width: 48%;">
+                    <div id="asterisk-cpu-usage" class="statistic-wrapper">
+                        <!-- placehodler -->
+                    </div>                   
+                </div>                
+            </div>
+        </div>        
+    </div>    
+</div>

@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+            <li>
+                Состояние
+            </li>
+        </ul>
+        <div>
+            <form>
+                <ul class="fieldlist">
+                    <li>     
+                        <label for="serverName">Название сервера</label>
+                        <input id="serverName" readonly name="chimeName" required type="text" class="k-textbox" style="width: 40%;" value="#= data.serverName #"/>                                
+                    </li>  
+                    <li>     
+                        <label for="serverDate">Время и дата сервера</label>
+                        <input name="serverDate" readonly id="serverDate" type="text" class="k-textbox" value="#= data.serverDate #" style="width: 40%;" />
+                    </li>                
+                    <li>     
+                        <label for="serverUptime">Время работы сервера в online</label>
+                        <input name="serverUptime" readonly id="serverUptime" type="text" class="k-textbox" value="#= data.serverUptime #" style="width: 40%;" />
+                    </li>                                               
+                </ul>                          
+            </form>
+        </div>
+        <div>
+            <div class="row">
+                <div id="server-statistic-toolbar">
+                    <!-- placeholder -->
+                </div>
+                <div class="col" style="width: 48%;">
+                    <div id="server-memory-usage" class="statistic-wrapper">
+                        <!-- placehodler -->
+                    </div>                    
+                </div>
+                <div class="col" style="width: 48%;">
+                    <div id="server-disk-usage" class="statistic-wrapper">
+                        <!-- placehodler -->
+                    </div>                    
+                </div>                
+            </div>
+        </div>
+    </div>        
+</div>
+<div class="row">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Астериски
+            </li>          
+        </ul>
+        <div>
+            <div id="asterisk-list">
+                <!-- placehodler -->
+            </div>          
+        </div>
+    </div>    
+</div>

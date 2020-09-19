@@ -1,0 +1,58 @@
+#task-tree-wrapper {
+    margin: 7px;
+}
+#task-tree-content {
+    border: solid 1px rgb(218, 218, 218);
+    border-top: none;
+    padding: 0.3em;    
+}
+.k-tabstrip>.k-content {
+    padding-left: 0.3em !important;
+    padding-right: 0.3em !important;
+}
+.statistic-wrapper {
+    padding: 3em;
+}
+pre { padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+#payments-list .pay-error {
+    background-color: #f2dddd;
+}
+#ownerPassportFiles .k-grid-header {
+    display: none;
+}
+#ownerPassportFiles .k-grid-content {
+    overflow-y: hidden;
+}
+.form-group .fieldlist {
+    padding: 0.2em !important;
+}
+.form-group .fieldlist li.group:first-child {
+    margin-top: 0.8em;
+}
+.form-group .fieldlist li.group {
+    border: solid 1px rgb(218, 218, 218);
+    padding: 1.2em;
+    margin-top: 1.6em;
+    padding-top: 2em;
+    width: auto;
+}
+.form-group .fieldlist li.group.no-border {
+    border: none;
+    margin-bottom: 0;
+    padding-top: 0;
+}
+.form-group .fieldlist li.group>label {
+    position: absolute;
+    margin-top: -34px;
+    background-color: white;
+    padding: 0.2em;
+    color: #bbbbbb;
+    font-weight: normal;
+    text-transform: none;    
+}

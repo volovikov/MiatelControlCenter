@@ -1,0 +1,57 @@
+<!-- старое -->
+
+<div id="main-page-tabs" class="tab-panel">
+    <ul>
+        # if (sectionAccess.indexOf(i18n.mainPanel.tabs.miatel) != -1) { #
+        <li id="section-miatel" data-index="0">
+            #= i18n.mainPanel.tabs.miatel #
+        </li>
+        # } #
+        # if (sectionAccess.indexOf(i18n.mainPanel.tabs.vats) != -1) { #
+        <li id="section-vats" data-index="1">
+            #= i18n.mainPanel.tabs.vats #
+        </li>        
+        # } #
+        # if (sectionAccess.indexOf(i18n.mainPanel.tabs.wholesale) != -1) { #
+        <li id="section-wholesale" data-index="2">
+            #= i18n.mainPanel.tabs.wholesale #
+        </li>
+        # } #
+    </ul>
+    # if (sectionAccess.indexOf(i18n.mainPanel.tabs.miatel) != -1) { #
+    <div>
+        <div id="main-page-control-content-wrapper" class="content-wrapper">
+            <div id="main-page-miatel-tree" class="col main-tree">
+                <!-- placeholder -->
+            </div>
+            <div id="main-page-miatel-content" class="col main-content">
+                <!-- placeholder -->
+            </div>            
+        </div>
+    </div>
+    # } #
+    # if (sectionAccess.indexOf(i18n.mainPanel.tabs.vats) != -1) { #
+    <div>
+        <div id="main-page-admin-content-wrapper" class="content-wrapper">
+            <div id="main-page-vats-tree" class="col main-tree">
+                <!-- placeholder -->
+            </div>
+            <div id="main-page-vats-content" class="col main-content">
+                <!-- placeholder -->
+            </div>            
+        </div>        
+    </div>
+    # } #
+    # if (sectionAccess.indexOf(i18n.mainPanel.tabs.wholesale) != -1) { #
+    <div>
+        <div id="main-page-settings_v2-content-wrapper" class="content-wrapper">
+            <div id="main-page-wholesale-tree" class="col main-tree">
+                <!-- placeholder -->
+            </div>
+            <div id="main-page-wholesale-content" class="col main-content">
+                <!-- placeholder -->
+            </div>
+        </div>
+    </div>
+    # } #
+</div>

@@ -1,0 +1,54 @@
+<div class="col" style="width: 98%;" id="crm-tasks-application-wrapper">
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Заявка на подключение
+            </li>
+        </ul>
+
+        <div>
+
+            <div class="input-wrapper">
+                <label for="clientBlock" class="k-edit-label" style="text-align: left; width: 85px;">Клиент</label>
+                <input type="checkbox" id="clientBlock" name="clientBlock" data-bind="checked:clientBlock" />
+            </div>
+            <div id="tranks-client">
+
+            </div>
+
+            <div class="input-wrapper">
+                <label for="partnerBlock" class="k-edit-label" style="text-align: left; width: 85px;">Партнер</label>
+                <input type="checkbox" id="partnerBlock" name="partnerBlock" data-bind="checked:partnerBlock" />
+            </div>
+            <div id="tranks-partner">
+
+            </div>
+
+            <div class="input-wrapper">
+                <button type="submit" id="application-cancel-btn" class="k-button k-primary contractButton">Отменить шаг</button>
+                <button type="submit" id="application-submit-btn" class="k-button k-primary contractButton">Отправить заявку на подключение</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="toolbar-client-template">
+    <div class="select-template">
+        <label class="category-label" for="clientSuffixType">Шаблон тарифного плана:</label>
+        <select id="clientSuffixType" class="selectField">
+            <option value="Premium">Премиум</option>
+            <option value="Standart">Стандарт</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-kendo-template" id="toolbar-partner-template">
+    <div class="select-template">
+        <label class="category-label" for="partnerSuffixType">Шаблон тарифного плана:</label>
+        <select id="partnerSuffixType" class="selectField">
+            <option value="Premium">Премиум</option>
+            <option value="Standart">Стандарт</option>
+        </select>
+    </div>
+</script>

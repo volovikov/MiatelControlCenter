@@ -1,0 +1,124 @@
+<form id='task-form'>
+    <div class="form-group">
+            <ul class="fieldlist">
+                <li>
+                    # if (typeof data.id != 'undefined') {#
+                    <input type='hidden' name='id' value='#= data.id #'>
+                    # } #
+                    # if (typeof data.parentTaskId != 'undefined') {#
+                    <input type='hidden' name='parentTaskId' value='#= data.parentTaskId #'>
+                    # } #                    
+                    <label for="simple-textarea">Тема</label>
+                    <textarea name="subject" required id="simple-textarea" class="k-textbox" style="width: 100%; min-height: 50px" >#= data.subject || ''#</textarea>
+                </li>
+                <li>
+                    <div class="col" style="width: 32%">
+                        <label for="simple-select">Приоритет</label>
+                        <select name="priority" class="combobox">
+                            <option # if (data.priority == 'Низкий')  {# selected #}#>Низкий</option>
+                            <option # if (data.priority == 'Нормальный') {# selected #}#>Нормальный</option>
+                            <option # if (data.priority == 'Высокий') {# selected #}#>Высокий</option>
+                            <option # if (data.priority == 'Срочный') {# selected #}#>Срочный</option>
+                            <option # if (data.priority == 'Немедленный') {# selected #}#>Немедленный</option>
+                        </select>                      
+                    </div>
+                    <div class="col" style="width: 33%">
+                        <label for="simple-select">Автор</label>
+                        <select name="taskAuthorId" class="combobox">
+                            # for (var i in userList) {#
+                            #   var user = userList[i]; #
+                            <option value="#= user.id #" # if (data.taskAuthorId == user.id) {# selected #}# >#= user.name #</option>
+                            # } #
+                        </select>                     
+                    </div>                    
+                    <div class="col" style="width: 33%">
+                        <label for="simple-select">Статус</label>
+                        <select # if (data.hasChildren) {# disabled #}# name="status" class="combobox">
+                            <option # if (data.status == 'Новая')  {# selected #}#>Новая</option>
+                            <option # if (data.status == 'В работе') {# selected #}#>В работе</option>
+                            <option # if (data.status == 'Решена') {# selected #}#>Решена</option>
+                            <option # if (data.status == 'Закрыта') {# selected #}#>Закрыта</option>
+                            <option # if (data.status == 'Отклонена') {# selected #}#>Отклонена</option>
+                            <option # if (data.status == 'Отложена') {# selected #}#>Отложена</option>
+                        </select>                     
+                    </div>                
+                </li>
+                <li>
+                    <div class="col" style="width: 32%">
+                        <label for="simple-select">Начало работы</label>
+                        <input name="workBegin" id="datepicker" class="datepicker" value="#= data.workBegin || u.getCurrentDateTime() #" style="width: 100%" />                       
+                    </div>
+                    <div class="col" style="width: 33%">
+                        <label for="simple-select">Конец работы</label>
+                        # if (typeof data.workEnd == 'undefined' || data.workEnd == '') {#
+                            <input # if (data.hasChildren) {# disabled #}# name="workEnd" id="datepicker" class="datepicker" value="" readonly style="width: 100%" />                                         
+                        # } else { #
+                            <input # if (data.hasChildren) {# disabled #}# name="workEnd" id="datepicker" class="datepicker" value="#= data.workEnd #" style="width: 100%" />                                         
+                        # } #                        
+                    </div>
+                    <div class="col" style="width: 33%">
+                        <label for="simple-select">Готовность</label>
+                        <select # if (data.hasChildren) {# disabled #}# name="complete" class="combobox">
+                            <option # if (data.complete == '0%')  {# selected #}#>0%</option>
+                            <option # if (data.complete == '10%') {# selected #}#>10%</option>
+                            <option # if (data.complete == '20%') {# selected #}#>20%</option>
+                            <option # if (data.complete == '30%') {# selected #}#>30%</option>
+                            <option # if (data.complete == '40%') {# selected #}#>40%</option>                        
+                            <option # if (data.complete == '50%') {# selected #}#>50%</option>                        
+                            <option # if (data.complete == '60%') {# selected #}#>60%</option>                        
+                            <option # if (data.complete == '70%') {# selected #}#>70%</option>                        
+                            <option # if (data.complete == '80%') {# selected #}#>80%</option>                        
+                            <option # if (data.complete == '90%') {# selected #}#>90%</option>                                                
+                            <option # if (data.complete == '100%') {# selected #}#>100%</option>                                                
+                        </select>                     
+                    </div>
+                </li> 
+                <li>
+                    <div class="col" style="width: 32%">
+                        <label for="simple-select">Предполагаемое время</label>
+                        <select name="needTime" class="combobox">
+                            <option value="60" # if (data.needTime == '60') {# selected #}#>1 час</option>
+                            <option value="240" # if (data.needTime == '240') {# selected #}#>4 часа</option>
+                            <option value="480" # if (data.needTime == '480') {# selected #}#>1 день</option>
+                            <option value="720" # if (data.needTime == '720') {# selected #}#>1,5 дня</option>
+                            <option value="960" # if (data.needTime == '960') {# selected #}#>2 дня</option>                        
+                            <option value="1200" # if (data.needTime == '1200') {# selected #}#>2,5 дня</option>                        
+                            <option value="1440" # if (data.needTime == '1440') {# selected #}#>3 дня</option>                        
+                            <option value="1680" # if (data.needTime == '1680') {# selected #}#>3,5 дня</option>                        
+                            <option value="1920" # if (data.needTime == '1920') {# selected #}#>4 дня</option>                        
+                            <option value="2160" # if (data.needTime == '2160') {# selected #}#>4,5 дня</option>                                                
+                            <option value="2400" # if (data.needTime == '2400') {# selected #}#>5 дней</option>                                                
+                        </select>     
+                    </div>
+                    <div class="col" style="width: 33%">
+                        <label for="simple-select">Назначена</label>
+                        <select name="taskExecutorId" class="combobox">
+                            # for (var i in userList) {#
+                            #   var user = userList[i]; #
+                            <option value="#= user.id #" # if (data.taskExecutorId.toString() == user.id.toString()) {# selected #}# >#= user.name || '' #</option>
+                            # } #
+                        </select>  
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </li> 
+                <li>
+                    <label for="simple-select">Наблюдатель</label>
+                    <select name="taskInspectorId" multiple="multiple" >
+                        # for (var i in userList) {#
+                        #   var user = userList[i]; #
+                        <option value="#= user.id #" # if (data.taskInspectorId.toString() == user.id.toString()) {# selected #}# >#= user.name || '' #</option>
+                        # } #
+                    </select> 
+                </li>
+                <li class="group no-border">
+                    <div align="right">
+                        <button onclick="return false;" id="task-save-btn" class="k-button k-primary task-save-btn">Сохранить</button>
+                        <button onclick="return false;" id="task-cancel-btn" class="k-button task-cancel-btn">Отменить</button>   
+                    </div>
+                </li>
+            </ul>                
+        </ul>             
+    </div>
+</form>

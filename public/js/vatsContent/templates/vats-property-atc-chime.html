@@ -1,0 +1,83 @@
+<div class="col" style="width: 28%;">
+    <form id="atc-chime-form">
+    <div class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Свойства
+            </li>
+        </ul>
+        <div>
+            <ul class="fieldlist">
+                <li>     
+                    <label for="chimeName">Название схемы</label>
+                    <input id="chimeName" name="chimeName" required type="text" class="k-textbox" style="width: 100%;" value="#= data.chimeName #"/>                                
+                </li>  
+                <li>     
+                    <label for="chimeComment">Описание</label>
+                    <textarea name="chimeComment" id="chimeComment" class="k-textbox" style="width: 100%; min-height: 100px" >#= data.chimeComment #</textarea>
+                </li>
+                <li>     
+                    <label for="chimeOrder">Порядок следования схемы</label>
+                    <input required name="chimeOrder" id="chimeOrder" type="number" class="number" value="#= data.chimeOrder #" min="0" max="100" step="1" style="width: 100%;" />
+                </li>  
+                <li>     
+                    <label for="chimeDisplayTarget">Показывать</label>
+                    <select id="chimeDisplayTarget" name="chimeDisplayTarget"  class="combobox">
+                        <option # if (data.chimeDisplayTarget == "all") {# selected #}# value="all">Везде</option>
+                        <option # if (data.chimeDisplayTarget == "home") {# selected #}# value="home">На главной странице</option>
+                        <option # if (data.chimeDisplayTarget == "atc") {# selected #}# value="atc">Только в разделе АТС</option>
+                    </select>
+                </li>                 
+                <li>
+                    <label for="chimeFilePreviewUrl">Файл c цветной миниатюрой схемы (160 x 107px)</label>
+                    <input type="file" name="chimeFilePreview"/>
+                    <input id="chimeFilePreviewUrl" name="chimeFilePreviewUrl" type="hidden" value="#= data.chimeFilePreviewUrl #">
+                </li>                
+                <li>
+                    <div id="chimeFilePreviewImg">
+                        # if (data.chimeFilePreviewUrl) {#
+                        <img src="#= data.chimeFilePreviewUrl #">
+                        # } #
+                    </div>
+                </li>
+                <li>
+                    <label for="chimeColorFileUrl">Файл с цветной схемой</label>
+                    <input type="file" name="chimeColorFile"/>
+                    <input id="chimeColorFileUrl" name="chimeColorFileUrl" type="hidden" value="#= data.chimeColorFileUrl #">
+                </li>
+                <li>
+                    <label for="chimeBwFileUrl">Файл с чб схемой</label>
+                    <input type="file" name="chimeBwFile"/>
+                    <input id="chimeBwFileUrl" name="chimeBwFileUrl" type="hidden" value="#= data.chimeBwFileUrl #">
+                </li>                
+                <li>
+                    <button id="atc-chime-form-submit-btn" class="k-button k-primary">Сохранить</button>
+                    <button id="atc-chime-form-delete-btn" class="k-button">Удалить</button>
+                </li>                
+            </ul>                          
+        </div>      
+    </div>    
+    </form>
+</div>
+<div class="col" style="width: 69%; position: relative; left: -10px">
+    <div id="tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Изображение цветное
+            </li>  
+            <li>
+                Черно-белое
+            </li>
+        </ul>
+        <div>
+            <div id="vats-property-atc-chime-color-img" class="atc-chime-img-wrapper">
+                <img src='#= data.chimeColorFileUrl #'>
+            </div>
+        </div>
+        <div>
+            <div id="vats-property-atc-chime-bw-img" class="atc-chime-img-wrapper">
+                <img src='#= data.chimeBwFileUrl #'>
+            </div>
+        </div>        
+    </div>
+</div>

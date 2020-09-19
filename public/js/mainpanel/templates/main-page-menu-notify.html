@@ -1,0 +1,29 @@
+<div id="main-page-notify-header">
+    <div class="k-header k-grid-toolbar">
+        <div class="toolbar">
+            <button id="#= key #-clear-notify-btn" class="k-button" data-user-target-id="#= userTargetId #">
+                <span class="k-icon k-i-funnel-clear"></span>
+                Сбросить
+            </button>
+        </div>
+    </div>
+</div>
+<div id="main-page-notify-content" class="k-grid main-page-notify-content">
+    <table class="main-page-notify-grid">
+        <tbody>
+            # for (var i in list) {#
+            # var rec = list[i], alt; #                
+            # if (i%2 == 0) {alt = "k-alt"} else {alt = ""} #
+            <tr class='#= alt #'>
+                <td>#= rec.msg #<br><div align="right"><span class="notify-date">#= rec.date #</span></div></td>
+            </tr>
+            # } #
+        </tbody>
+    </table>
+</div>
+<div id="main-page-notify-footer">
+    <div class="k-pager-wrap k-grid-pager k-widget" data-role="pager">
+        <span class="k-pager-info k-label">Всего #= total # записей</span>
+    </div>
+</div>
+

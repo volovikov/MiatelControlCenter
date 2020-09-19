@@ -1,0 +1,75 @@
+<div id="tabstrip" class="tabstrip">
+    <ul>
+        <li class="k-state-active">
+            Список задач
+        </li>
+    </ul>
+    <div>
+        <div id="wholesale-crm-tasks-list">
+            <!-- placehodler -->
+        </div>
+
+    </div>
+</div>
+
+<script id="popupTemplate" type="text/x-kendo-template">
+
+        <div class="taskPopup" style="width: 95%; margin: 0 auto;">
+            <div class="wholesale-crm-tasks-contacts"></div>
+
+            <div class="popupFields" style="margin-top: 20px;">
+                <div class="k-edit-label" style="width: 20%;">
+                    <label for="taskName">Задача:</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <input id="taskName" name="taskName"  data-bind="value:taskName" class="k-textbox" required />
+                </div>
+
+                <!--<div class="k-edit-label" style="width: 20%;">
+                    <label for="taskType">Тип задачи:</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <input id="taskType" name="taskType" data-bind="value:taskType" class="k-textbox" required />
+                </div>-->
+
+                <div class="k-edit-label" style="width: 20%;">
+                    <label for="companyName">Компания:</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <input id="companyName" name="companyName" data-bind="value:companyName" class="k-textbox" required />
+                </div>
+
+                <div class="k-edit-label" style="width: 20%;">
+                    <label for="lang">Язык</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <input id="lang" name="langName" data-bind="value:langId"/>
+                </div>
+
+                <div class="k-edit-label" style="width: 20%;">
+                    <label for="group">Группа</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <input id="group" name="groupId" data-bind="value:groupId"/>
+                </div>
+
+                <div class="k-edit-label" style="width: 20%;">
+                    <label for="member">Сотрудник</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <input id="member" name="memberId" data-bind="value:memberId"/>
+                </div>
+
+                <div class="k-edit-label" style="width: 20%;">
+                    <label for="taskInfo">Описание задачи</label>
+                </div>
+                <div class="k-edit-field" style="width: 70%;">
+                    <textarea style="width: 100%" class="k-textbox" id="taskInfo" name="taskInfo" rows="5" cols="45"></textarea>
+                </div>
+            </div>
+
+
+        </div>
+
+
+</script>

@@ -1,0 +1,189 @@
+<div class="col" style="width: 48%;" id="crm-tasks-agreement-wrapper">
+    <div id="property-form-tabstrip" class="tabstrip">
+        <ul>
+            <li class="k-state-active">
+                Заключение договора
+            </li>
+        </ul>
+
+        <div>
+
+            <form id="jurForm">
+                <div class="input-wrapper">
+                    <label for="agreementForm" class="k-edit-label" style="width: 20%; text-align: left;">Форма договора:</label>
+                    <input id="agreementForm" name="agreementForm" data-bind="value:agreementForm" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="contractJurisdiction" class="k-edit-label" style="width: 20%; text-align: left;">Юрисдикция:</label>
+                    <input id="contractJurisdiction" name="contractJurisdiction" data-bind="value:contractJurisdiction" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="contractCurrency" class="k-edit-label" style="width: 20%; text-align: left;">Валюта договора:</label>
+                    <input id="contractCurrency" name="contractCurrency" data-bind="value:contractCurrency" style="width: 70%;" required />
+                </div>
+            </form>
+
+            <form id="ourForm" class="contract-forms">
+
+                <div class="input-wrapper">
+                    <label for="contractTemplate" class="k-edit-label" style="width: 20%; text-align: left;">Шаблон договора:</label>
+                    <input id="contractTemplate" name="contractTemplate" data-bind="value:contractTemplate" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="ourBankDetails" class="k-edit-label" style="width: 20%; text-align: left;">Банковские реквизиты:</label>
+                    <input id="ourBankDetails" name="ourBankDetails" data-bind="value:ourBankDetails" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="contractNumber" class="k-edit-label" style="width: 20%; text-align: left;">Номер договора:</label>
+                    <input id="contractNumber" name="contractNumber" data-bind="value:contractNumber" class="k-textbox" style="width: 70%;" required />
+                </div>
+
+            </form>
+
+            <form id="partnerForm" class="contract-forms">
+
+                <div class="input-wrapper">
+                    <label for="contractName" class="k-edit-label" style="width: 20%; text-align: left;">Название договора:</label>
+                    <input id="contractName" name="contractName" data-bind="value:contractName" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="bankDetails" class="k-edit-label" style="width: 20%; text-align: left;">Банковские реквизиты:</label>
+                    <textarea style="width: 90%" id="bankDetails" name="bankDetails" rows="8" cols="45"></textarea>
+                </div>
+
+            </form>
+
+            <form id="commonForm">
+
+                <div class="input-wrapper">
+                    <label for="contractDate" class="k-edit-label" style="width: 20%; text-align: left;">Дата договора:</label>
+                    <input id="contractDate" name="contractDate" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="legalEntity" class="k-edit-label" style="width: 20%; text-align: left;">Полное название юр. лица:</label>
+                    <input id="legalEntity" name="legalEntity" data-bind="value:legalEntity" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="legalAddress" class="k-edit-label" style="width: 20%; text-align: left;">Юридический адрес:</label>
+                    <input id="legalAddress" name="legalAddress" data-bind="value:legalAddress" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="registrationNumber" class="k-edit-label" style="width: 20%; text-align: left;">Регистрационный номер:</label>
+                    <input id="registrationNumber" name="registrationNumber" data-bind="value:registrationNumber" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="taxNumber" class="k-edit-label" style="width: 20%; text-align: left;">Налоговый номер:</label>
+                    <input id="taxNumber" name="taxNumber" data-bind="value:taxNumber" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="paymentMetod" class="k-edit-label" style="width: 20%; text-align: left;">Способ оплаты:</label>
+                    <select name="paymentMetod" id="paymentMetod" data-bind="value:paymentMetod" class="selectField">
+                        <option value="prepayment">Предоплата</option>
+                        <option value="inFact">По факту</option>
+                    </select>
+                </div>
+                <div class="input-wrapper">
+                    <label for="creditLimit" class="k-edit-label" style="width: 20%; text-align: left;">Кредитный лимит:</label>
+                    <input id="creditLimit" name="creditLimit" data-bind="value:creditLimit" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="timeZone" class="k-edit-label" style="width: 20%; text-align: left;">Часовой пояс договора:</label>
+                    <input id="timeZone" name="timeZone" data-bind="value:timeZone" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="periodProvision" class="k-edit-label" style="width: 20%; text-align: left;">Период оказания услуг:</label>
+                    <select name="periodProvision" id="periodProvision" data-bind="value:periodProvision" class="selectField">
+                        <option value="month">Месяц</option>
+                        <option value="two weeks">Две недели</option>
+                        <option value="week">Неделя</option>
+                    </select>
+                </div>
+                <div class="input-wrapper">
+                    <label for="lastPayDay" class="k-edit-label" style="width: 20%; text-align: left;">Последний день оплаты:</label>
+                    <select name="lastPayDay" id="lastPayDay" data-bind="value:lastPayDay" class="selectField">
+                        <option value="45">45</option>
+                        <option value="30">30</option>
+                        <option value="15">15</option>
+                        <option value="7">7</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="input-wrapper">
+                    <label for="contractSignatory" class="k-edit-label" style="width: 20%; text-align: left;">Подписант договора:</label>
+                    <input id="contractSignatory" name="contractSignatory" data-bind="value:contractSignatory" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="positionSignatory" class="k-edit-label" style="width: 20%; text-align: left;">Должность подписанта:</label>
+                    <input id="positionSignatory" name="positionSignatory" data-bind="value:positionSignatory" class="k-textbox" style="width: 70%;" required />
+                </div>
+                <div class="input-wrapper">
+                    <label for="authoritySignatory" class="k-edit-label" style="width: 20%; text-align: left;">Основание подписанта договора:</label>
+                    <input id="authoritySignatory" name="authoritySignatory" value="Устава" class="k-textbox" style="width: 70%;" required />
+                </div>
+
+                <h4>Контакты</h4>
+                <fieldset>
+                    <legend>Служба технической поддержки</legend>
+                    <div class="input-wrapper">
+                        <label for="nameContactTech" class="k-edit-label" style="width: 20%; text-align: left;">ФИО</label>
+                        <input id="nameContactTech" name="nameContactTech" data-bind="value:nameContactTech" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="mailContactTech" class="k-edit-label" style="width: 20%; text-align: left;">e-mail</label>
+                        <input id="mailContactTech" name="mailContactTech" data-bind="value:mailContactTech" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="phoneContactTech" class="k-edit-label" style="width: 20%; text-align: left;">Телефон</label>
+                        <input id="phoneContactTech" name="phoneContactTech" data-bind="value:phoneContactTech" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Финансовая служба</legend>
+                    <div class="input-wrapper">
+                        <label for="nameContactFinance" class="k-edit-label" style="width: 20%; text-align: left;">ФИО</label>
+                        <input id="nameContactFinance" name="nameContactFinance" data-bind="value:nameContactFinance" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="mailContactFinance" class="k-edit-label" style="width: 20%; text-align: left;">e-mail</label>
+                        <input id="mailContactFinance" name="mailContactFinance" data-bind="value:mailContactFinance" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="phoneContactFinance" class="k-edit-label" style="width: 20%; text-align: left;">Телефон</label>
+                        <input id="phoneContactFinance" name="phoneContactFinance" data-bind="value:phoneContactFinance" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Уведомление о смене тарифов</legend>
+                    <div class="input-wrapper">
+                        <label for="nameContactNotice" class="k-edit-label" style="width: 20%; text-align: left;">ФИО</label>
+                        <input id="nameContactNotice" name="nameContactNotice" data-bind="value:nameContactNotice" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="mailContactNotice" class="k-edit-label" style="width: 20%; text-align: left;">e-mail</label>
+                        <input id="mailContactNotice" name="mailContactNotice" data-bind="value:mailContactNotice" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="phoneContactNotice" class="k-edit-label" style="width: 20%; text-align: left;">Телефон</label>
+                        <input id="phoneContactNotice" name="phoneContactNotice" data-bind="value:phoneContactNotice" class="k-textbox" style="width: 70%;"  />
+                    </div>
+                </fieldset>
+
+                <button type="submit" id="contract-cancel-btn" class="k-button k-primary contractButton">Отменить шаг</button>
+                <button type="submit" id="contract-save-btn" class="k-button k-primary contractButton">Сохранить</button>
+                <button type="submit" id="contract-show-btn" class="k-button k-primary contractButton">Просмтор договора</button>
+                <button type="submit" id="contract-submit-btn" class="k-button k-primary contractButton">Далее</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--<script id="ourForm-template" type="text/x-kendo-template">
+
+</script>
+
+<script id="partnerForm-template" type="text/x-kendo-template">
+
+</script>-->

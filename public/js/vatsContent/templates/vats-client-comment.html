@@ -1,0 +1,31 @@
+# if (direction == 'to') { #   
+    <div align="left">
+        <div class="message message-to">
+            <span  class="client-comment" id="client-comment-#= data.id #" data-client-comment-id="#= data.id #">
+                #= data.comment #
+            </span>
+            # if (userRole == 'admin') { #
+            <i unselectable="on" class="k-icon k-i-close" role="button" tabindex="-1"></i>
+            # } #                        
+            <div class="message-date">
+                #= data.commentDate #<br>
+                #= data.commentAuthorName #
+            </div>                          
+        </div>
+    </div>
+# } else { #
+    <div align="right">
+        <div class="message message-from">
+            <div class="message-date">
+                #= data.commentDate #<br>
+                #= data.commentAuthorName #
+            </div>            
+            # if (userRole == 'admin') { #
+                <i unselectable="on" class="k-icon k-i-close" role="button" tabindex="-1"></i>
+            # } #                        
+            <span class="client-comment" id="client-comment-#= data.id #" data-client-comment-id="#= data.id #">
+                #= data.comment #
+            </span>
+        </div>
+    </div>
+# } #

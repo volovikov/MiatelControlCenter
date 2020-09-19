@@ -1,0 +1,58 @@
+<form id="client-popup-form">
+            <ul class="fieldlist">
+                <li>
+                    <label for="subject">Имя клиента</label>
+                    <input required name="subject" id="subject" value="" style="width: 100%" class="k-textbox"/>
+                </li>
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Состояние</label>
+                        <select name="clientStatus" class="combobox">
+                            <option value="enable" >Активный</option>
+                            <option value="disable" >Не активный</option>
+                        </select>                        
+                    </div>
+                    <div class="col" style="width: 50%" id="partnerCodeField">
+                        <label>Партнерский код</label>
+                        <input name="partnerCode" value="" style="width: 100%" class="k-textbox"/>
+                    </div>
+                </li>                
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Ответственный</label>
+                        <select name="clientOwnerId" class="combobox">
+                            # for (var i in userList) {#
+                                # var user = userList[i]; #
+                                <option value="#= user.id #" >#= user.name #</option>
+                            # } #
+                        </select>                        
+                    </div>
+                    <div class="col" style="width: 50%">
+                        
+                    </div>
+                </li>
+                <li>
+                    <div class="col" style="width: 49%">
+                        <label>Телефон</label>
+                        <input name="clientPhone" value="" style="width: 100%" class="k-textbox"/>
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <label>Email</label>
+                        <input name="clientEmail" value="" style="width: 100%" class="k-textbox"/>                        
+                    </div>
+                </li>                
+                <li>
+                    <label for="simple-select">Наблюдатели</label>
+                    <select name="clientInspectorId" multiple="multiple" class="miltiple-combobox">
+                        # for (var i in userList) {#
+                            # var user = userList[i]; #
+                            <option value="#= user.id #" # if (defaultInspectorId == user.id) {# selected #}#>#= user.name #</option>
+                        # } #
+                    </select>
+                </li>
+                <li>
+                    <button id="btn-client-insert" class="k-button k-primary">Сохранить</button>
+                    <button id="btn-client-cancel" class="k-button">Отменить</button>
+                </li>
+            </ul>
+    </form>
