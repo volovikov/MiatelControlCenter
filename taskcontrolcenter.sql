@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 20 2020 г., 21:01
+-- Время создания: Сен 20 2020 г., 22:54
 -- Версия сервера: 8.0.12
 -- Версия PHP: 5.5.38
 
@@ -33,21 +33,26 @@ CREATE TABLE `members` (
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `role` set('Директор','Руководитель отдела','Инженер','Менеджер','Партнер') NOT NULL,
+  `role` set('Директор','Руководитель отдела','Инженер','Менеджер','Партнер') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'Инженер',
   `sectionAccessCode` varchar(255) NOT NULL,
-  `departmentId` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `position` varchar(255) NOT NULL,
-  `innerPhoneNumber` varchar(255) NOT NULL,
-  `partnerCode` varchar(255) NOT NULL
+  `departmentId` int(11) DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '''''',
+  `position` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '''''',
+  `innerPhoneNumber` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '''''',
+  `partnerCode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '''''',
+  `birthday` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT ''''''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `members`
 --
 
-INSERT INTO `members` (`id`, `login`, `password`, `name`, `role`, `sectionAccessCode`, `departmentId`, `email`, `position`, `innerPhoneNumber`, `partnerCode`) VALUES
-(1, 'volovikov', '674413a', '', '', '[{name:\'Полный доступ\'}]', 1, '', '', '', '');
+INSERT INTO `members` (`id`, `login`, `password`, `name`, `role`, `sectionAccessCode`, `departmentId`, `email`, `position`, `innerPhoneNumber`, `partnerCode`, `birthday`) VALUES
+(1, 'volovikov', '674413a', 'Воловиков Владимир', 'Инженер,Менеджер', '[{\"id\":\"3\",\"name\":\"Задачи\",\"section\":\"Миател\"},{\"id\":\"2\",\"name\":\"Сотрудники\",\"section\":\"Миател\"},{\"id\":\"4\",\"name\":\"Сайт\",\"section\":\"Миател\"}]', 1, '', 'Руководитель отдела', '', '', '2019-03-18'),
+(2, 'newpeople', 'miatel', 'Новое имя', 'Инженер', '', 1, '', 'Инженер', '', '', '2020-09-08 00:00:00'),
+(3, 'andrey', 'miatel', 'Андрей Кури', 'Инженер', '', 1, 'some@mail.ru', '\'\'', '', '', ''),
+(5, '', '', '', 'Инженер', '', NULL, '', '\'\'', '', '', '\'\''),
+(6, 'aleksey', 'miatel', 'aleksey', 'Инженер', '[{\"id\":\"1\",\"name\":\"Полный доступ\",\"section\":\"Полный доступ\"}]', 1, '', '\'\'', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -84,7 +89,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
-('nJbCtkC3VusmBW5HWy6KLr4POZEE72yZ', 1600711241, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"users\":{\"72788358\":{\"id\":1,\"login\":\"volovikov\",\"sectionAccessCode\":\"[{name:\'Полный доступ\'}]\",\"userHash\":72788358,\"cookie\":\"s:nJbCtkC3VusmBW5HWy6KLr4POZEE72yZ.vjswHDTela++2hJW8FtbPhuTE2OCsDCjBIlLwDI1vu4\"}}}');
+('nJbCtkC3VusmBW5HWy6KLr4POZEE72yZ', 1600718004, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"users\":{\"72788358\":{\"id\":1,\"login\":\"volovikov\",\"sectionAccessCode\":\"[{name:\'Полный доступ\'}]\",\"userHash\":72788358,\"cookie\":\"s:nJbCtkC3VusmBW5HWy6KLr4POZEE72yZ.vjswHDTela++2hJW8FtbPhuTE2OCsDCjBIlLwDI1vu4\"}}}');
 
 -- --------------------------------------------------------
 
@@ -114,7 +119,7 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `hasChildren`, `subject`, `parentTaskId`, `status`, `archive`, `needTime`, `priority`, `taskInspectorId`, `taskAuthorId`, `taskExecutorId`, `workBegin`, `workEnd`, `complete`) VALUES
-(1, 0, 'Новая задача', 0, 'Новая', 0, '960', 'Низкий', '1', 1, 1, '2020-09-20 00:00:00', '', '0%');
+(1, 0, 'Новая задача', 0, 'Новая', 0, '1200', 'Низкий', '1', 1, 1, '2020-09-20 00:00:00', '', '0%');
 
 -- --------------------------------------------------------
 
@@ -135,19 +140,8 @@ CREATE TABLE `taskschangehistory` (
 --
 
 INSERT INTO `taskschangehistory` (`id`, `taskId`, `changeUserId`, `changeMessage`, `changeDate`) VALUES
-(1, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:44:17'),
-(2, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:45:15'),
-(3, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:48:08'),
-(4, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:49:56'),
-(5, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:53:21'),
-(6, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:53:59'),
-(7, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:54:20'),
-(8, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:54:34'),
-(9, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:56:31'),
-(10, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:57:37'),
-(11, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1h', '2020-09-20 20:58:50'),
-(12, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 2d', '2020-09-20 20:59:43'),
-(13, 1, 1, 'Пользователь undefined сменил свойства задачи', '2020-09-20 21:00:40');
+(1, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 1d', '2020-09-20 22:44:50'),
+(2, 1, 1, 'Пользователь undefined изменил предполагаемое время работы на 2d 4h', '2020-09-20 22:47:57');
 
 -- --------------------------------------------------------
 
@@ -256,7 +250,7 @@ ALTER TABLE `tasksuserread`
 -- AUTO_INCREMENT для таблицы `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `membersdepartment`
@@ -274,7 +268,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT для таблицы `taskschangehistory`
 --
 ALTER TABLE `taskschangehistory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `taskscomment`
