@@ -775,8 +775,8 @@ router.post('/update-task', function(req, res, next) {
         });    
     });   
     query = "\n UPDATE `Tasks` SET " + set.join(', ') + " WHERE `id` = '" + obj.id + "'; "; 
-    
-    tasksDb.query(query, function(err) {        
+
+    tasksDb.query(query, function(err) {
         if (!err) {
             if (typeof sourceTaskId != 'undefined') {
                updateParentTask(sourceParentTaskId, userHash);
