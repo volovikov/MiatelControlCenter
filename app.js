@@ -8,11 +8,19 @@ var express = require('express'),
     store = require('express-mysql-session');
     logger = require('morgan');
 
+var port = 8080;
+
 var app = express(),
     server = require('http').Server(app),
     io = require("socket.io").listen(server);
     
-server.listen(8080);
+server.listen(port, (err) => {
+    if (err) {
+        console.log('something bad happened', err)
+    } else {
+        console.log(`server is listening on ${port}`)
+    }
+});
 
 var settings = require('./settings'),    
     index = require('./routes/index'),    
@@ -48,13 +56,13 @@ app.use(expressSession({
     store: new store({
         host: 'localhost',
         user: 'root',
-        password: 'BasBodEurp1_',
-        database: 'nodejs_session',        
+        password: '',
+        database: 'taskcontrolcenter',
     })    
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
-//app.use('/api', api);
+app.use('/api', api);
 app.use('/api/client', client);
 app.use('/api/task', task);
 app.use('/api/member', member);

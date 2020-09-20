@@ -5,10 +5,10 @@ define([
         version:"1.05",
         vatsGlobalId:'customer79112639718',
         mailServerUrl:'https://mcc-dev.miatel.ru/', 
-        serverUrl:"https://mcc-dev.miatel.ru/",
-        wwwServerUrl: "https://net-dev.miatel.ru/api/",
+        serverUrl:"http://localhost:8080/",
+        wwwServerUrl: "http://localhost:8080/api/",
         voiceipServerUrl:"https://voip-dev.miatel.ru/api/",
-        mccServerUrl:"https://mcc-dev.miatel.ru/api/",
+        mccServerUrl:"http://localhost:8080/api/",
         chatServerUrl:"https://io-dev.miatel.ru/",
         mccUserRobotId: 31, // MCC_USER_ROBOT_ID
         contratSignFineMsgShort: 'Заключение договора прошло успешно',

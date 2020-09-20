@@ -1,6 +1,6 @@
 var express = require('express'),        
     router = express.Router(),
-    lwip = require('lwip'),
+    //lwip = require('lwip'),
     fs = require('fs');
 
 router.get('/', function(req, res, next) {
@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
         res.send(text);
     });        
 });
+/*
 router.post('/upload-image', function(req, res, next) {
     var fstream,
         path = '/var/www/mcc.miatel.ru/public/files/', //<-- may be remove to constant.js file ? 
@@ -82,4 +83,5 @@ router.post('/upload-image', function(req, res, next) {
         });
     });    
 });
+*/
 module.exports = router;

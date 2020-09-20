@@ -486,7 +486,7 @@ router.post('/add-task', function(req, res, next) {
             data.changeUserId = userId,
             data.changeMessage = changeMessage;
             data.changeDate = workBegin;
-console.log(data);
+
             commonSocket && commonSocket.emit('add-task', data);
             setTaskRead(data.id, userId);
 

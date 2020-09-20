@@ -5,10 +5,10 @@
  */
 module.exports = {
     tasksDb: {
-        host: 'mcc-dev.miatel.ru', 
-        user: 'volovikov',
-        password: 'Tu86@fas!',
-        database: 'tasks',
+        host: 'localhost', 
+        user: 'root',
+        password: '',
+        database: 'taskcontrolcenter',
         multipleStatements: true,
         charset: 'utf8'        
     },

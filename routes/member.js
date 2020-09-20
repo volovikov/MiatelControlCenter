@@ -297,7 +297,7 @@ router.post('/get-member-list-tree', function(req, res, next) {
     var query = "\n SELECT `m`.`id`, `m`.`innerPhoneNumber`,`m`.`name`, `m`.`login`, `m`.`password`, `m`.`email`, `m`.`sectionAccessCode`, `md`.`name` AS `departmentName`, `md`.`id` AS `departmentId`" +
                 "\n FROM `MembersDepartment` AS `md`" +
                 "\n LEFT JOIN `Members` AS `m` ON `m`.`departmentId` = `md`.`id`";
-    
+
     tasksDb.query(query, function(err, result) {
         if (!err) {
             var tmp = {},
