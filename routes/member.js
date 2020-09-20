@@ -149,8 +149,8 @@ router.post('/add-member', function(req, res, next) {
              */
             var id = ++result[0]['id'],
                 query = "\n INSERT INTO `Members` (`id`, `name`, `login`, `password`, `email`, `sectionAccessCode`, `departmentId`, `innerPhoneNumber`, `partnerCode`)" +
-                        "\n VALUES(" + id + ", '', '', '', '', '', '', '', '')";
-                
+                        "\n VALUES(" + id + ", '', '', '', '', '', NULL, '', '')";
+
             tasksDb.query(query, function(err, result) {
                 if (!err) {
                     var lastInsertId = result.insertId;
