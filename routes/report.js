@@ -84,8 +84,8 @@ router.post('/get-need-time', function(req, res, next) {
             var query = "\n SELECT `t`.`id`, COUNT(*) AS `taskCompleteTotal`, SUM(`needTime`) AS `taskNeedTimeTotal`, `taskExecutorId`, " +
                         "\n (SELECT `name` FROM `Members` WHERE `id` = `t`.`taskExecutorId`) AS `taskExecutorName`" +
                         "\n FROM `Tasks` AS `t` WHERE `parentTaskId`IN (" + ids.join(',') + ") AND `taskExecutorId` != '' AND `hasChildren` = 0" +
-                        "\n GROUP BY `taskExecutorId`";
-        
+                        "\n GROUP BY `t`.`taskExecutorId`";
+
             tasksDb.query(query, function(err, result) {
                 if (!err) {
                     var totalTime = 0,
