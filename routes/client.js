@@ -584,7 +584,6 @@ router.post('/add-client', function(req, res, next) {
                 registerDatetime: registerDatetime,
                 parentClientId: parentClientId                
             };
-console.log(data);            
             res.json({
                 success: true,
                 data: data
