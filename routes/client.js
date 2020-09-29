@@ -1222,14 +1222,16 @@ router.post('/get-client-history-list', function(req, res, next) {
 });
 module.exports = function(io, settings, constant) {
     commonSocket = io;
-    tasksDb = db = mysql.createConnection(settings.tasksDb);
-    voiceipDb = mysql.createConnection(settings.voiceipDb);    
-    wwwDb = mysql.createConnection(settings.wwwDb);
-    sbcDb = mysql.createConnection(settings.sbcDb);    
-    u.handleDisconnect(tasksDb);
-    u.handleDisconnect(voiceipDb);
-    u.handleDisconnect(wwwDb);
-    u.handleDisconnect(sbcDb);         
+    tasksDb = mysql.createPool(settings.tasksDb);
+
+    //tasksDb = db = mysql.createConnection(settings.tasksDb);
+    //voiceipDb = mysql.createConnection(settings.voiceipDb);    
+    //wwwDb = mysql.createConnection(settings.wwwDb);
+    //sbcDb = mysql.createConnection(settings.sbcDb);    
+    //u.handleDisconnect(tasksDb);
+    //u.handleDisconnect(voiceipDb);
+    //u.handleDisconnect(wwwDb);
+    //u.handleDisconnect(sbcDb);         
     
     io.on('connection', function(socket) {
         socket.emit('client-socket-ready');

@@ -10,7 +10,10 @@ module.exports = {
         password: '',
         database: 'taskcontrolcenter',
         multipleStatements: true,
-        charset: 'utf8'        
+        charset: 'utf8',
+        connectionLimit: 50,
+        queueLimit: 0,
+        waitForConnection: true,        
     },
     voiceipDb: {
         host: '10.10.20.76',    

@@ -22,20 +22,6 @@ var getUserIdFromHash = function(userHash, session) {
         return false;
     }
 };
-function handleDisconnect(connection) {
-    connection.on('error', function(err) {
-        if (!err.fatal) {
-            return;
-        } else if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            console.log('Re-connecting lost connection ');
-            connection = mysql.createConnection(connection.config);
-            handleDisconnect(connection);
-            connection.connect();
-        } else {
-            throw err;
-        }        
-    });
-}
 
 var getGroupParentIds = function(taskId, callback) {
     var query = "\n SELECT `t1`.`id` AS `l1`, `t2`.`id` AS `l2`, `t3`.`id` AS `l3`, `t4`.`id` AS `l4`, `t5`.`id` AS `l5`, `t6`.`id` AS `l6`" +
@@ -118,13 +104,15 @@ router.post('/get-need-time', function(req, res, next) {
     }
 });
 module.exports = function(io, settings, constant) {    
-    tasksDb = db = mysql.createConnection(settings.tasksDb);
-    voiceipDb = mysql.createConnection(settings.voiceipDb);    
-    wwwDb = mysql.createConnection(settings.wwwDb);
-    sbcDb = mysql.createConnection(settings.sbcDb);    
-    handleDisconnect(tasksDb);
-    handleDisconnect(voiceipDb);
-    handleDisconnect(wwwDb);
-    handleDisconnect(sbcDb);               
+    tasksDb = mysql.createPool(settings.tasksDb);
+    
+    //tasksDb = db = mysql.createConnection(settings.tasksDb);
+    //voiceipDb = mysql.createConnection(settings.voiceipDb);    
+    //wwwDb = mysql.createConnection(settings.wwwDb);
+    //sbcDb = mysql.createConnection(settings.sbcDb);    
+    //handleDisconnect(tasksDb);
+    //handleDisconnect(voiceipDb);
+    //handleDisconnect(wwwDb);
+    //handleDisconnect(sbcDb);               
     return router;
 };

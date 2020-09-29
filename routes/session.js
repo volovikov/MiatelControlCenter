@@ -3,20 +3,6 @@ var express = require('express'),
     cnt = require('../constant'),
     mysql  = require('mysql');
 
-function handleDisconnect(connection) {
-    connection.on('error', function(err) {
-        if (!err.fatal) {
-            return;
-        } else if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            console.log('Re-connecting lost connection ');
-            connection = mysql.createConnection(connection.config);
-            handleDisconnect(connection);
-            connection.connect();
-        } else {
-            throw err;
-        }        
-    });
-}
 router.post('/get-session-list', function(req, res, next) {
     var skip = req.body.skip || 0,
         take = req.body.take || cnt.defaultTake,    
@@ -85,14 +71,16 @@ router.post('/del-session', function(req, res, next) {
 });
 module.exports = function(io, settings, constant) {
     commonSocket = io;
-    tasksDb = db = mysql.createConnection(settings.tasksDb);
-    voiceipDb = mysql.createConnection(settings.voiceipDb);    
-    wwwDb = mysql.createConnection(settings.wwwDb);
-    sbcDb = mysql.createConnection(settings.sbcDb);    
-    handleDisconnect(tasksDb);
-    handleDisconnect(voiceipDb);
-    handleDisconnect(wwwDb);
-    handleDisconnect(sbcDb);         
+    tasksDb = mysql.createPool(settings.tasksDb);
+
+    //tasksDb = db = mysql.createConnection(settings.tasksDb);
+    //voiceipDb = mysql.createConnection(settings.voiceipDb);    
+    //wwwDb = mysql.createConnection(settings.wwwDb);
+    //sbcDb = mysql.createConnection(settings.sbcDb);    
+    //handleDisconnect(tasksDb);
+    //handleDisconnect(voiceipDb);
+    //handleDisconnect(wwwDb);
+    //handleDisconnect(sbcDb);         
     
     return router;
 };

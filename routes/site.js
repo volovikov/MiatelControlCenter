@@ -46,20 +46,6 @@ var getEscapeString = function(str) {
         }
     });
 }
-var handleDisconnect = function(connection) {
-    connection.on('error', function(err) {
-        if (!err.fatal) {
-            return;
-        } else if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            console.log('Re-connecting lost connection ');
-            connection = mysql.createConnection(connection.config);
-            handleDisconnect(connection);
-            connection.connect();
-        } else {
-            throw err;
-        }        
-    });
-}
 router.post('/get-site-settings', function(req, res, next) {
     res.json({
         success: true,
@@ -758,14 +744,15 @@ router.post('/del-site-news', function(req, res, next) {
     }
 });
 module.exports = function(io, settings) {
-    tasksDb = db = mysql.createConnection(settings.tasksDb);
-    voiceipDb = mysql.createConnection(settings.voiceipDb);    
-    wwwDb = mysql.createConnection(settings.wwwDb);
-    sbcDb = mysql.createConnection(settings.sbcDb);    
-    handleDisconnect(tasksDb);
-    handleDisconnect(voiceipDb);
-    handleDisconnect(wwwDb);
-    handleDisconnect(sbcDb);         
+    tasksDb = mysql.createPool(settings.tasksDb);
+    //tasksDb = db = mysql.createConnection(settings.tasksDb);
+    //voiceipDb = mysql.createConnection(settings.voiceipDb);    
+    //wwwDb = mysql.createConnection(settings.wwwDb);
+    //sbcDb = mysql.createConnection(settings.sbcDb);    
+    //handleDisconnect(tasksDb);
+    //handleDisconnect(voiceipDb);
+    //handleDisconnect(wwwDb);
+    //handleDisconnect(sbcDb);         
     
     return router;
 };

@@ -24,20 +24,6 @@ var getUserIdFromHash = function(userHash, session) {
         return false;
     }
 };
-function handleDisconnect(connection) {
-    connection.on('error', function(err) {
-        if (!err.fatal) {
-            return;
-        } else if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            console.log('Re-connecting lost connection ');
-            connection = mysql.createConnection(connection.config);
-            handleDisconnect(connection);
-            connection.connect();
-        } else {
-            throw err;
-        }        
-    });
-}
 router.post('/get-partner', function(req, res, next) { 
     var partnerCode = req.body.partnerCode;
 
@@ -515,14 +501,16 @@ router.post('/get-role-list', function(req, res, next) {
 });
 module.exports = function(io, settings, constant) {
     commonSocket = io;
-    tasksDb = db = mysql.createConnection(settings.tasksDb);
-    voiceipDb = mysql.createConnection(settings.voiceipDb);    
-    wwwDb = mysql.createConnection(settings.wwwDb);
-    sbcDb = mysql.createConnection(settings.sbcDb);    
-    handleDisconnect(tasksDb);
-    handleDisconnect(voiceipDb);
-    handleDisconnect(wwwDb);
-    handleDisconnect(sbcDb);         
+    tasksDb = mysql.createPool(settings.tasksDb);
+
+    //tasksDb = db = mysql.createConnection(settings.tasksDb);
+    //voiceipDb = mysql.createConnection(settings.voiceipDb);    
+    //wwwDb = mysql.createConnection(settings.wwwDb);
+    //sbcDb = mysql.createConnection(settings.sbcDb);    
+    //handleDisconnect(tasksDb);
+    //handleDisconnect(voiceipDb);
+    //handleDisconnect(wwwDb);
+    //handleDisconnect(sbcDb);         
     
     io.on('connection', function(socket) {
         socket.emit('api-socket-ready');

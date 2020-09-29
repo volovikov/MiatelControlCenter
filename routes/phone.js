@@ -364,7 +364,7 @@ router.post('/update-city', function(req, res, next) {
         }
         var query = "\n USE `miatel_net`;"+
                     "\n UPDATE `mvatc_cityList` SET " + set.join(', ') + " WHERE `cityId` = '" + params.cityId +"'";
-console.log(query);            
+  
         wwwDb.query(query, function(err, data) {
             if (!err) {
                 res.json({
@@ -380,13 +380,15 @@ console.log(query);
     }
 });
 module.exports = function(io, settings) {
-    tasksDb = db = mysql.createConnection(settings.tasksDb);
-    voiceipDb = mysql.createConnection(settings.voiceipDb);    
-    wwwDb = mysql.createConnection(settings.wwwDb);
-    sbcDb = mysql.createConnection(settings.sbcDb);    
-    util.handleDisconnect(tasksDb);
-    util.handleDisconnect(voiceipDb);
-    util.handleDisconnect(wwwDb);
-    util.handleDisconnect(sbcDb);             
+    tasksDb = mysql.createPool(settings.tasksDb);
+
+    //tasksDb = db = mysql.createConnection(settings.tasksDb);
+    //voiceipDb = mysql.createConnection(settings.voiceipDb);    
+    //wwwDb = mysql.createConnection(settings.wwwDb);
+    //sbcDb = mysql.createConnection(settings.sbcDb);    
+    //util.handleDisconnect(tasksDb);
+    //util.handleDisconnect(voiceipDb);
+    //util.handleDisconnect(wwwDb);
+    //util.handleDisconnect(sbcDb);             
     return router;
 };
